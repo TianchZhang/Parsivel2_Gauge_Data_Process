@@ -11,7 +11,7 @@
         // .m文件编码
         "[matlab]": {
             "files.encoding": "gb2312",
-            "files.autoGuessEncoding": false,
+            "files.autoGuessEncoding": true,
         },
         "code-runner.runInTerminal": true,
         // .m文件关联
