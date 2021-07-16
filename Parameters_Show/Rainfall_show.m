@@ -165,7 +165,6 @@ ax1.YLim = [0 200];
 ax1.YTick = 0:50:200;
 title({'Rainrate per minute','2019.06 - 2020.05'});
 
-
 ax2 = subplot(2,1,2);
 b2 = plot(1:1:length(rainrate2020_2021),rainrate2020_2021);
 ax2.FontSize = 10;
@@ -178,11 +177,7 @@ ax2.YLabel.String = 'Rainrate(mm\cdoth^{-1})';
 ax2.YLim = [0 200];
 ax2.YTick = 0:50:200;
 title({'Rainrate per minute','2020.06 - 2021.05'});
-line([0 366],[10 10],'Color',[0.6 0.6 0.6],'LineStyle','--','LineWidth',0.5);
-line([0 366],[25 25],'Color',[0.6 0.6 0.6],'LineStyle','--','LineWidth',0.5);
-line([0 366],[50 50],'Color',[0.6 0.6 0.6],'LineStyle','--','LineWidth',0.5);
-line([0 366],[100 100],'Color',[0.6 0.6 0.6],'LineStyle','--','LineWidth',0.5);
 
 set(gcf,'Position',[1,1,600,400]);
-savename = ['D:\DATA\OTTParsivel\Pictures\new\','Daily Rainfall-non.png'];
+savename = ['D:\DATA\OTTParsivel\Pictures\new\','Rainrate-non.png'];
 saveas(gcf,savename);
