@@ -6,7 +6,7 @@
 
 clear;
 
-savepath ='E:\DATA\OTTParsivel\QC2019-\';
+savepath ='D:\DATA\OTTParsivel\QC2019-\';
 file_root = 'E:\DATA\OTTParsivel\57494\Mputu\';
 file_day = dir(file_root);
 load('E:\CODE\OTTparsivel2_mat\data_parameters\DSD_parameters.mat','speed_coe');
