@@ -4,7 +4,7 @@
 % 2021.05.24 by zhangtc
 
 clear;
-file_root = 'E:\DATA\OTTParsivel\QC2019-\';
+file_root = 'D:\DATA\OTTParsivel\nonQC2019-\';
 file_day = dir([file_root,'*.h5']);
 Rainev_day={};
 Rainev_detal = {};
@@ -67,4 +67,4 @@ for fnum = 1 : length(file_day)
         end
     end
 end
-save('E:\DATA\OTTParsivel\Rainevents_30.mat','Rainev_day','Rainev_detal');
+save('D:\DATA\Parsivel_temporary\Rainevents_30.mat','Rainev_day','Rainev_detal');

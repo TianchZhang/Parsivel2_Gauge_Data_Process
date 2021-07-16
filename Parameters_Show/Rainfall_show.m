@@ -10,8 +10,10 @@ rainfall2019_2020 = zeros(366,1);
 rainfall2019_2020mo = zeros(12,1);
 rainfall2020_2021 = zeros(365,1);
 rainfall2020_2021mo = zeros(12,1);
+rainrate2019_2020 = [];
+rainrate2020_2021 = [];
 
-file_root = 'E:\DATA\OTTParsivel\nonQC2019-\';
+file_root = 'D:\DATA\OTTParsivel\nonQC2019-\';
 file_day = dir([file_root,'*.h5']);
 
 temp_time2019 = datenum(2019,5,31);
@@ -19,6 +21,7 @@ temp_time2020 = datenum(2020,5,31);
 
 for fnum = 1 : length(file_day)
     fname = [file_root,file_day(fnum).name];
+    rainrate = h5read(fname,'/RR');
     rainfall = sum(h5read(fname,'/RR'))./60;
     temp_t = datenum(fix(str2double(file_day(fnum).name(1:4))),...
         fix(str2double(file_day(fnum).name(5:6))),...
@@ -32,6 +35,7 @@ for fnum = 1 : length(file_day)
             dt_mon = (fix(str2double(file_day(fnum).name(1:4)))-2019)*12 +...
                 fix(str2double(file_day(fnum).name(5:6))) - 5;
             rainfall2019_2020mo(dt_mon) = rainfall2019_2020mo(dt_mon) + rainfall;
+            rainrate2019_2020 = [rainrate2019_2020;rainrate];
         else
             if temp_day < 732
                 temp_day = temp_t - temp_time2020;
@@ -39,19 +43,20 @@ for fnum = 1 : length(file_day)
                 dt_mon = (fix(str2double(file_day(fnum).name(1:4)))-2020)*12 +...
                     fix(str2double(file_day(fnum).name(5:6))) - 5;
                 rainfall2020_2021mo(dt_mon) = rainfall2020_2021mo(dt_mon) + rainfall;
+                rainrate2020_2021 = [rainrate2020_2021;rainrate];
             end
         end
     end
 end
 
-save('E:\CODE\OTTparsivel2_mat\Rainfall_data_non.mat',...
+save('D:\DATA\Parsivel_temporary\Rainfall_data_non.mat',...
     'rainfall2019_2020','rainfall2019_2020mo',...
     'rainfall2020_2021','rainfall2020_2021mo');
 clear
 
 %%
 %monthly rainfall
-load('E:\CODE\OTTparsivel2_mat\Rainfall_data_non.mat',...
+load('D:\DATA\Parsivel_temporary\Rainfall_data_non.mat',...
     'rainfall2019_2020mo', 'rainfall2020_2021mo');
 
 figure;
@@ -92,7 +97,7 @@ for num1 = 1:12
 end
 
 set(gcf,'Position',[1,1,600,400]);
-savename = ['E:\DATA\OTTParsivel\Pictures\','Monthly Rainfall_non.png'];
+savename = ['D:\DATA\OTTParsivel\Pictures\new\','Monthly Rainfall_non.png'];
 saveas(gcf,savename);
 
 %%
