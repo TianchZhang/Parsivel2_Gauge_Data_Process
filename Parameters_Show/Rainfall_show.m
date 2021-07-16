@@ -10,8 +10,8 @@ rainfall2019_2020 = zeros(366,1);
 rainfall2019_2020mo = zeros(12,1);
 rainfall2020_2021 = zeros(365,1);
 rainfall2020_2021mo = zeros(12,1);
-rainrate2019_2020 = [];
-rainrate2020_2021 = [];
+rainrate2019_2020 = zeros(366*1440,1);
+rainrate2020_2021 = zeros(365*1440,1);
 
 file_root = 'D:\DATA\OTTParsivel\nonQC2019-\';
 file_day = dir([file_root,'*.h5']);
@@ -35,7 +35,7 @@ for fnum = 1 : length(file_day)
             dt_mon = (fix(str2double(file_day(fnum).name(1:4)))-2019)*12 +...
                 fix(str2double(file_day(fnum).name(5:6))) - 5;
             rainfall2019_2020mo(dt_mon) = rainfall2019_2020mo(dt_mon) + rainfall;
-            rainrate2019_2020 = [rainrate2019_2020;rainrate];
+            rainrate2019_2020((temp_day-1)*1440+1:temp_day*1440) = rainrate;
         else
             if temp_day < 732
                 temp_day = temp_t - temp_time2020;
@@ -43,7 +43,7 @@ for fnum = 1 : length(file_day)
                 dt_mon = (fix(str2double(file_day(fnum).name(1:4)))-2020)*12 +...
                     fix(str2double(file_day(fnum).name(5:6))) - 5;
                 rainfall2020_2021mo(dt_mon) = rainfall2020_2021mo(dt_mon) + rainfall;
-                rainrate2020_2021 = [rainrate2020_2021;rainrate];
+                rainrate2020_2021((temp_day-1)*1440+1:temp_day*1440) = rainrate;
             end
         end
     end
