@@ -120,8 +120,7 @@ b1.FaceColor = [0 0.75 1];
 ax1.FontSize = 10;
 ax1.TickLength = [0.005 0.005];
 ax1.LineWidth = 1.2;
-ax1.XLim = [0 366];
-ax1.XTick = 15:30:366;
+ax1.XTick = 15:30:350;
 ax1.XTickLabel = {'Jun.','Jul.','Aug.','Sept.','Oct.',...
     'Nov.','Dec.','Jan.','Feb.','Mar.','Apr.','May.'};
 ax1.XMinorTick = 'on';
@@ -139,8 +138,7 @@ b2.FaceColor = [0 0.75 1];
 ax2.FontSize = 10;
 ax2.TickLength = [0.005 0.005];
 ax2.LineWidth = 1.2;
-ax2.XLim = [0 365];
-ax2.XTick = 15:30:365;
+ax2.XTick = 15:30:350;
 ax2.XTickLabel = {'Jun.','Jul.','Aug.','Sept.','Oct.',...
     'Nov.','Dec.','Jan.','Feb.','Mar.','Apr.','May.'};
 ax2.XMinorTick = 'on';
@@ -188,7 +186,6 @@ ax2.XLim = [0 length(rainrate2020_2021)];
 ax2.XTick = 15*1440:30*1440:365*1440;
 ax2.XTickLabel = {'Jun.','Jul.','Aug.','Sept.','Oct.',...
     'Nov.','Dec.','Jan.','Feb.','Mar.','Apr.','May.'};
-ax2.XMinorTick = 'on';
 ax2.YLabel.String = 'Rainrate(mm\cdoth^{-1})';
 ax2.YLim = [0 200];
 ax2.YTick = 0:50:200;
