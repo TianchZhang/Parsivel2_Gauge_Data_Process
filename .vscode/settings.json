@@ -7,10 +7,10 @@
         // lint工具路径 （该工具用于语法检查）
         "matlab.mlintpath": "D:\\Program Files\\MATLAB\\R2021a\\bin\\win64\\mlint.exe",
         // 提示编码
-        "matlab.linterEncoding": "gb2312",
+        "matlab.linterEncoding": "utf8",
         // .m文件编码
         "[matlab]": {
-            "files.encoding": "gb2312",
+            "files.encoding": "utf8",
             "files.autoGuessEncoding": true,
         },
         "code-runner.runInTerminal": true,
