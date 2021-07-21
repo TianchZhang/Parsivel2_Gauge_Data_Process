@@ -10,10 +10,10 @@ clear;
 savepath ='D:\DATA\OTTParsivel\nonQC2019-\';
 file_root = 'E:\DATA\OTTParsivel\57494\Mputu\';
 file_day = dir(file_root);
-load('E:\CODE\OTTparsivel2_mat\data_parameters\DSD_parameters.mat','speed_coe');
-load('E:\CODE\OTTparsivel2_mat\data_parameters\DSD_parameters.mat','central_diameter');
-load('E:\CODE\OTTparsivel2_mat\data_parameters\DSD_parameters.mat','central_speed');
-load('E:\CODE\OTTparsivel2_mat\data_parameters\DSD_parameters.mat','diameter_bandwidth');
+load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','speed_coe');
+load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
+load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
+load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','diameter_bandwidth');
 for fnum = 3:length(file_day)
     fname = [file_root,file_day(fnum).name];
     
