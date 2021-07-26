@@ -8,11 +8,17 @@ file_root = 'D:\DATA\OTTParsivel\nonQC2019-\';
 file_day = dir([file_root,'*.h5']);
 Rainev_day={};
 Rainev_detal = {};
+temp_Rainev_day= [];
+temp_Rainev_detal = [];
+Conv_day = [];
+Conv_detal = [];
+Stra_day = [];
+Stra_detal = [];
 
 for fnum = 1 : length(file_day)
     fname = [file_root,file_day(fnum).name];
     rainflag = h5read(fname,'/rainflag');
-    
+    typeflag = h5read(fname,'/typeflag');
     if sum(rainflag) > 30
         cons5 = circshift(smooth(rainflag,5),-2);
         cons5(1437:1440) = 0;
@@ -60,9 +66,10 @@ for fnum = 1 : length(file_day)
                 end
             end
             rainloc(key,:)=[];
-            if length(rainloc) > 0
-                Rainev_day = [Rainev_day;file_day(fnum).name(1:8)];
-                Rainev_detal = [Rainev_detal;rainloc];
+            if ~isempty(rainloc)
+                temp_Rainev_day = [Rainev_day;file_day(fnum).name(1:8)];
+                temp_Rainev_detal = [Rainev_detal;rainloc];
+                if find()
             end
         end
     end

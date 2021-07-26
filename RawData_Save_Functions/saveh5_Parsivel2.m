@@ -1,4 +1,12 @@
-%Description:
+%MUA_PLidar532 Parameters calculating  from licel-glued PLidar Data
+% Functionality:
+%   -  batch processing
+%   -  calculating of parameters
+%       Range corrected signal
+%       Volume depolarization ratio
+%
+% History:
+%   2021.07.22 First Edition by  tc.zhang
 %Convert Parsivel and Gauge data into H5 files
 % History:
 % 2020-05-19. First Edition by Zhenping
