@@ -43,7 +43,7 @@ legend('Spr.','Sum.','Aut.','Win.');
 hold off
 ax = gca;
 ax.XLim = [0 8];
-ax.XTick = [0:1:8];
+ax.XTick = 0:1:8;
 ax.YScale = 'log';
 ax.YLim = [0.0001 10000];
 ax.Box = 'on';
@@ -79,7 +79,7 @@ legend('Spr.','Sum.','Aut.','Win.');
 hold off
 ax = gca;
 ax.XLim = [0 8];
-ax.XTick = [0:1:8];
+ax.XTick = 0:1:8;
 ax.YScale = 'log';
 ax.YLim = [0.0001 10000];
 ax.Box = 'on';
@@ -110,7 +110,7 @@ legend('Convective','Stratiform','Total');
 hold off
 ax = gca;
 ax.XLim = [0 8];
-ax.XTick = [0:1:8];
+ax.XTick = 0:1:8;
 ax.YScale = 'log';
 ax.YLim = [0.0001 10000];
 ax.Box = 'on';
@@ -259,12 +259,12 @@ text(2,0.13,{'Mean = 1.17','STD = 0.39','SK = 1.49'});
 text(4.5,0.13,{'Mean = 3.93','STD = 0.51','SK = 0.25'});
 
 ax2 = subplot(3,1,2);
-h1 = histogram([Nw_conv_all],1.65:0.1:5.95);
+h1 = histogram(Nw_conv_all,1.65:0.1:5.95);
 h1.Normalization = 'probability';
 h1.FaceColor = '[0 0.5 1]';
 % h1.FaceAlpha = 0.3;
 hold on
-h2 = histogram([Dm_conv_all],0.05:0.1:5.95);
+h2 = histogram(Dm_conv_all,0.05:0.1:5.95);
 h2.Normalization = 'probability';
 h2.FaceColor = '[0 1 0.5]';
 % h2.FaceAlpha = 0.3;
