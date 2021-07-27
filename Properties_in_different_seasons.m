@@ -288,7 +288,7 @@ h1.Normalization = 'probability';
 h1.FaceColor = '[0 0.5 1]';
 % h1.FaceAlpha = 0.3;
 hold on
-h2 = histogram([Dm_stra_all],0.05:0.1:5.95);
+h2 = histogram(Dm_stra_all,0.05:0.1:5.95);
 h2.Normalization = 'probability';
 h2.FaceColor = '[0 1 0.5]';
 % h2.FaceAlpha = 0.3;
