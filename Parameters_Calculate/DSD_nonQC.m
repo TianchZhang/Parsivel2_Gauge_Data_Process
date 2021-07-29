@@ -9,7 +9,7 @@ clear;
 nonrain = ["20190404";"20190405";"20190406";"20190407";...
     "20191218";"20200109";"20200115";"20200116";"20200125";...
     "20200215";"20201213";"20201214";"20201229"];
-savepath ='D:\DATA\OTTParsivel\nonQC2019-\';
+savepath ='E:\DATA\OTTParsivel\nonQC2019-\';
 file_root = 'E:\DATA\OTTParsivel\57494\Mputu\';
 file_day = dir(file_root);
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','speed_coe');
@@ -50,6 +50,7 @@ for fnum = 3:length(file_day)
             putu(:,[1:2,24:32]) = 0;
             temp_putu = putu .* speed_coe;
             clear putu
+            rainflag(mTime_putu) = 0;
             if sum(sum(temp_putu)) > 10
                 Mputu(:,:,mTime_putu) = temp_putu;
                 rainflag(mTime_putu) = 1;
@@ -105,7 +106,7 @@ for fnum = 3:length(file_day)
         
         Rainfall = sum(RR)./60;
         
-        if sum(rainflag) > 0
+        if any(rainflag > 0)
             temp_rf = rainflag;
             temp_rf(RR < 0.5) = 0;
             temp_r = smooth(temp_rf,11);
@@ -115,14 +116,14 @@ for fnum = 3:length(file_day)
             if ~isempty(temp_loc)
                 for num = 1:length(temp_loc)
                     temp_RR = RR(temp_loc(num) - 5:temp_loc(num) + 5);
-                    if min(temp_RR) >= 5.0
+                    if mean(temp_RR) >= 5.0
                         if std(temp_RR) > 1.5
                             typeflag(temp_loc(num)) = 1;%convective
                         else
                             typeflag(temp_loc(num)) = 10;
                         end
                     else
-                        if max(temp_RR) < 5.0
+                        if mean(temp_RR) < 5.0
                             if std(temp_RR) <= 1.5
                                 typeflag(temp_loc(num)) = 2;%stratiform
                             else
@@ -133,8 +134,7 @@ for fnum = 3:length(file_day)
                 end
             end
             clear temp_r
-            
-            
+
             savename = [savepath,file_day(fnum).name,'.h5'];
             
             h5init(savename);
@@ -192,7 +192,17 @@ for fnum = 3:length(file_day)
             hdf5writedata(savename, '/N0',N0, ...
                 'dataAttr', ...
                 struct('Units', 'm^{-3}*mm^{-1-¦Ì}',  'long_name', 'intercept parameter'));
+            hdf5writedata(savename, '/Mn/M2', M2, ...
+                'dataAttr', ...
+                struct('Units', '', 'long_name', 'M2'));
+            hdf5writedata(savename, '/Mn/M3', M3, ...
+                'dataAttr', ...
+                struct('Units', '', 'long_name', 'M3'));
+            hdf5writedata(savename, '/Mn/M4', M4, ...
+                'dataAttr', ...
+                struct('Units', '', 'long_name', 'M4'));
             max(lamd)
+            min(lamd)
         end
     end
 end
