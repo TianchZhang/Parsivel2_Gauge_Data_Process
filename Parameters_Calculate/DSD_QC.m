@@ -11,7 +11,7 @@ nonrain = ["20190404";"20190405";"20190406";"20190407";...
 savepath ='E:\DATA\OTTParsivel\QC2019-\';
 file_root = 'E:\DATA\OTTParsivel\57494\Mputu\';
 file_day = dir(file_root);
-load('D:\DATA\Parsivel_temporaryDSD_parameters.mat','speed_coe');
+load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','speed_coe');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_dia_qc');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','dia_bandwidth_qc');
@@ -105,7 +105,7 @@ for fnum = 3:length(file_day)
         
         Rainfall = sum(RR)./60;
         
-        if any(rainflag > 0 )
+        if any(rainflag > 0)
             temp_rf = rainflag;
             temp_rf(RR < 0.1) = 0;
             temp_r = smooth(temp_rf,11);
@@ -115,7 +115,7 @@ for fnum = 3:length(file_day)
             if ~isempty(temp_loc)
                 for num = 1:length(temp_loc)
                     temp_RR = RR(temp_loc(num) - 5:temp_loc(num) + 5);
-                    if min(temp_RR) >= 5.0
+                    if mean(temp_RR) >= 5.0
                         if std(temp_RR) > 1.5
                             typeflag(temp_loc(num)) = 1;%convective
                         else
@@ -123,7 +123,7 @@ for fnum = 3:length(file_day)
                         end
                         %                     typeflag(temp_loc(num)) = 1;%convective
                     else
-                        if max(temp_RR) < 5.0
+                        if mean(temp_RR) < 5.0
                             if std(temp_RR) <= 1.5
                                 typeflag(temp_loc(num)) = 2;%stratiform
                             else
@@ -134,8 +134,7 @@ for fnum = 3:length(file_day)
                 end
             end
             clear temp_r
-            
-            
+                        
             savename = [savepath,file_day(fnum).name,'.h5'];
             
             h5init(savename);
@@ -202,8 +201,7 @@ for fnum = 3:length(file_day)
             hdf5writedata(savename, '/Mn/M4', M4, ...
                 'dataAttr', ...
                 struct('Units', '', 'long_name', 'M4'));
-            max(lamd)
-            min(lamd)
+
         end
     end
 end
