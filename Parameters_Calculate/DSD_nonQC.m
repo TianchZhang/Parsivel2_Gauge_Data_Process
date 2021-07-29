@@ -19,7 +19,7 @@ load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','diameter_bandwidth');
 for fnum = 3:length(file_day)
     if ~any(contains(nonrain,file_day(fnum).name))
         fname = [file_root,file_day(fnum).name];
-        
+        fnum
         Mputu = zeros(32,32,1440);
         rainflag = zeros(1440,1)-1;
         typeflag = zeros(1440,1);
@@ -202,7 +202,9 @@ for fnum = 3:length(file_day)
                 'dataAttr', ...
                 struct('Units', '', 'long_name', 'M4'));
             max(lamd)
-            min(lamd)
+            min(lamd(lamd > 0))
+            max(mu)
+            min(mu(mu > 0))
         end
     end
 end

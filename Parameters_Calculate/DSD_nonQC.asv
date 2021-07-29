@@ -18,9 +18,8 @@ load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','diameter_bandwidth');
 for fnum = 3:length(file_day)
     if ~any(contains(nonrain,file_day(fnum).name))
-        fnum
         fname = [file_root,file_day(fnum).name];
-        
+        fnum
         Mputu = zeros(32,32,1440);
         rainflag = zeros(1440,1)-1;
         typeflag = zeros(1440,1);
@@ -117,14 +116,14 @@ for fnum = 3:length(file_day)
             if ~isempty(temp_loc)
                 for num = 1:length(temp_loc)
                     temp_RR = RR(temp_loc(num) - 5:temp_loc(num) + 5);
-                    if min(temp_RR) >= 5.0
+                    if mean(temp_RR) >= 5.0
                         if std(temp_RR) > 1.5
                             typeflag(temp_loc(num)) = 1;%convective
                         else
                             typeflag(temp_loc(num)) = 10;
                         end
                     else
-                        if max(temp_RR) < 5.0
+                        if mean(temp_RR) < 5.0
                             if std(temp_RR) <= 1.5
                                 typeflag(temp_loc(num)) = 2;%stratiform
                             else
@@ -193,7 +192,19 @@ for fnum = 3:length(file_day)
             hdf5writedata(savename, '/N0',N0, ...
                 'dataAttr', ...
                 struct('Units', 'm^{-3}*mm^{-1-¦Ì}',  'long_name', 'intercept parameter'));
+            hdf5writedata(savename, '/Mn/M2', M2, ...
+                'dataAttr', ...
+                struct('Units', '', 'long_name', 'M2'));
+            hdf5writedata(savename, '/Mn/M3', M3, ...
+                'dataAttr', ...
+                struct('Units', '', 'long_name', 'M3'));
+            hdf5writedata(savename, '/Mn/M4', M4, ...
+                'dataAttr', ...
+                struct('Units', '', 'long_name', 'M4'));
             max(lamd)
+            min(lamd(lamd > 0))
+            max(mu)
+            min(mu(mu > 0))
         end
     end
 end
