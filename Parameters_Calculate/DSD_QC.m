@@ -8,10 +8,10 @@ clear;
 nonrain = ["20190404";"20190405";"20190406";"20190407";...
     "20191218";"20200109";"20200115";"20200116";"20200125";...
     "20200215";"20201213";"20201214";"20201229"];
-savepath ='E:\DATA\OTTParsivel\QC2019-\';
-file_root = 'E:\DATA\OTTParsivel\57494\Mputu\';
+savepath ='D:\DATA\OTTParsivel\QC2019-\';
+file_root = 'D:\DATA\OTTParsivel\57494\Mputu\';
 file_day = dir(file_root);
-load('D:\DATA\Parsivel_temporaryDSD_parameters.mat','speed_coe');
+load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','speed_coe');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_dia_qc');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','dia_bandwidth_qc');
@@ -105,7 +105,7 @@ for fnum = 3:length(file_day)
         
         Rainfall = sum(RR)./60;
         
-        if any(rainflag > 0 )
+        if any(rainflag > 0)
             temp_rf = rainflag;
             temp_rf(RR < 0.1) = 0;
             temp_r = smooth(temp_rf,11);
@@ -134,8 +134,7 @@ for fnum = 3:length(file_day)
                 end
             end
             clear temp_r
-            
-            
+                        
             savename = [savepath,file_day(fnum).name,'.h5'];
             
             h5init(savename);
@@ -202,8 +201,7 @@ for fnum = 3:length(file_day)
             hdf5writedata(savename, '/Mn/M4', M4, ...
                 'dataAttr', ...
                 struct('Units', '', 'long_name', 'M4'));
-            max(lamd)
-            min(lamd)
+
         end
     end
 end
