@@ -115,7 +115,7 @@ for fnum = 3:length(file_day)
             if ~isempty(temp_loc)
                 for num = 1:length(temp_loc)
                     temp_RR = RR(temp_loc(num) - 5:temp_loc(num) + 5);
-                    if min(temp_RR) >= 5.0
+                    if mean(temp_RR) >= 5.0
                         if std(temp_RR) > 1.5
                             typeflag(temp_loc(num)) = 1;%convective
                         else
@@ -123,7 +123,7 @@ for fnum = 3:length(file_day)
                         end
                         %                     typeflag(temp_loc(num)) = 1;%convective
                     else
-                        if max(temp_RR) < 5.0
+                        if mean(temp_RR) < 5.0
                             if std(temp_RR) <= 1.5
                                 typeflag(temp_loc(num)) = 2;%stratiform
                             else

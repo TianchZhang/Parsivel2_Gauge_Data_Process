@@ -33,7 +33,7 @@ for fnum = 3:length(file_day)
         LWC = zeros(1440,1);
         Z = zeros(1440,1);
         Rainfall = 0;
-        
+        Rainfall_h = zeros(24,1);
         M2 = zeros(1440,1);
         M3 = zeros(1440,1);
         M4 = zeros(1440,1);
@@ -105,6 +105,9 @@ for fnum = 3:length(file_day)
         end
         
         Rainfall = sum(RR)./60;
+        for hh = 1:24
+           Rainfall_h(hh) = sum(RR((hh-1)*60+1:hh*60))./60;  
+        end
         
         if any(rainflag > 0)
             temp_rf = rainflag;
@@ -163,6 +166,9 @@ for fnum = 3:length(file_day)
             hdf5writedata(savename, '/Rainfall', Rainfall, ...
                 'dataAttr', ...
                 struct('Units', 'mm', 'long_name', 'rainfall'));
+            hdf5writedata(savename, '/Rainfall_h', Rainfall_h, ...
+                'dataAttr', ...
+                struct('Units', 'mm', 'long_name', 'rainfall per hour'));
             
             hdf5writedata(savename, '/LWC', LWC, ...
                 'dataAttr', ...
@@ -173,7 +179,7 @@ for fnum = 3:length(file_day)
                 struct('Units', 'mm', 'long_name', 'mass-weighted mean diameter'));
             hdf5writedata(savename, '/D0', D0, ...
                 'dataAttr', ...
-                struct('Units', 'mm', 'long_name', 'volume-weighted mean diameter'));
+                struct('Units', 'mm', 'long_name', 'median volume diameter'));
             hdf5writedata(savename, '/Nw',Nw, ...
                 'dataAttr', ...
                 struct('Units', 'mm^{-1}*m^{-3}',  'long_name', 'normalized intercept parameter'));
