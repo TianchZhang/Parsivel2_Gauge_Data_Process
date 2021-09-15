@@ -57,16 +57,17 @@ yyaxis right
 b1 = bar(1:5,[zeros(1,5);rd2019p]);
 b1(2).FaceColor = [0.75 0.75 0.75];
 b1(2).EdgeColor = [0.75 0.75 0.75];
-ax1.YColor = [0.5 0.5 0.5]; 
+ax1.YColor = [0.3 0.3 0.3]; 
 ax1.YLim = [0 1];
 ax1.YTick = 0:0.2:1;
+ax1.YTickLabel = {'0','20%','40%','60%','80%','100%'};
 % ax1.YLabel.String = 'Percentage';
 title({'2019.06 - 2020.05','Rainy day'});
 formatSpec = "%3.1f%s";
-text(1,rd2019p(1)+0.08,sprintf(formatSpec,rd2019p(1)*100,'%'));
-text(2,rd2019p(2)+0.07,sprintf(formatSpec,rd2019p(2)*100,'%'));
-text(3,rd2019p(3)+0.07,sprintf(formatSpec,rd2019p(3)*100,'%'));
-text(4,rd2019p(4)+0.07,sprintf(formatSpec,rd2019p(4)*100,'%'));
+text(1,rd2019p(1)+0.08,sprintf(formatSpec,rd2019p(1)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(2,rd2019p(2)+0.07,sprintf(formatSpec,rd2019p(2)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(3,rd2019p(3)+0.07,sprintf(formatSpec,rd2019p(3)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(4,rd2019p(4)+0.07,sprintf(formatSpec,rd2019p(4)*100,'%'),'Color',[0.3 0.3 0.3]);
 
 
 ax1 = subplot(2,2,3);
@@ -91,15 +92,16 @@ yyaxis right
 b1 = bar(1:5,[zeros(1,5);rf2019p]);
 b1(2).FaceColor = [0.75 0.75 0.75];
 b1(2).EdgeColor = [0.75 0.75 0.75];
-ax1.YColor = [0.5 0.5 0.5]; 
+ax1.YColor = [0.3 0.3 0.3]; 
 ax1.YLim = [0 1];
 ax1.YTick = 0:0.2:1;
+ax1.YTickLabel = {'0','20%','40%','60%','80%','100%'};
 title({'Rainfall(mm)'});
 formatSpec = "%3.1f%s";
-text(1,rf2019p(1)+0.08,sprintf(formatSpec,rf2019p(1)*100,'%'));
-text(2,rf2019p(2)+0.07,sprintf(formatSpec,rf2019p(2)*100,'%'));
-text(3,rf2019p(3)+0.07,sprintf(formatSpec,rf2019p(3)*100,'%'));
-text(4,rf2019p(4)+0.07,sprintf(formatSpec,rf2019p(4)*100,'%'));
+text(1,rf2019p(1)+0.08,sprintf(formatSpec,rf2019p(1)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(2,rf2019p(2)+0.07,sprintf(formatSpec,rf2019p(2)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(3,rf2019p(3)+0.07,sprintf(formatSpec,rf2019p(3)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(4,rf2019p(4)+0.07,sprintf(formatSpec,rf2019p(4)*100,'%'),'Color',[0.3 0.3 0.3]);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ax1 = subplot(2,2,2);
 yyaxis left
@@ -117,22 +119,24 @@ text(0.55,rd2020(1)+12,sprintf('%d',rd2020(1)));
 text(1.65,rd2020(2)+12,sprintf('%d',rd2020(2)));
 text(2.7,rd2020(3)+12,sprintf('%d',rd2020(3)));
 text(3.8,rd2020(4)+12,sprintf('%d',rd2020(4)));
-text(4.8,rd2020(5)+13,sprintf('%d',rd2020(5)));
+text(4.7,rd2020(5)+13,sprintf('%d',rd2020(5)));
 yyaxis right
 b1 = bar(1:5,[zeros(1,5);rd2020p]);
 b1(2).FaceColor = [0.75 0.75 0.75];
 b1(2).EdgeColor = [0.75 0.75 0.75];
-ax1.YColor = [0.5 0.5 0.5]; 
+ax1.YColor = [0.3 0.3 0.3]; 
 ax1.YLim = [0 1];
 ax1.YTick = 0:0.2:1;
+ax1.YTickLabel = {'0','20%','40%','60%','80%','100%'};
 % ax1.YLabel.String = 'Percentage';
 title({'2020.06 - 2021.05','Rainy day'});
 formatSpec = "%3.1f%s";
-text(1,rd2020p(1)+0.08,sprintf(formatSpec,rd2020p(1)*100,'%'));
-text(2-0.02,rd2020p(2)+0.07,sprintf(formatSpec,rd2020p(2)*100,'%'));
-text(3-0.02,rd2020p(3)+0.07,sprintf(formatSpec,rd2020p(3)*100,'%'));
-text(4-0.02,rd2020p(4)+0.07,sprintf(formatSpec,rd2020p(4)*100,'%'));
-text(5-0.02,rd2020p(5)+0.07,sprintf(formatSpec,rd2020p(5)*100,'%'));
+text(1,rd2020p(1)+0.08,sprintf(formatSpec,rd2020p(1)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(2-0.02,rd2020p(2)+0.07,sprintf(formatSpec,rd2020p(2)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(3-0.01,rd2020p(3)+0.07,sprintf(formatSpec,rd2020p(3)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(4-0.02,rd2020p(4)+0.07,sprintf(formatSpec,rd2020p(4)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(5-0.02,rd2020p(5)+0.07,sprintf(formatSpec,rd2020p(5)*100,'%'),'Color',[0.3 0.3 0.3]);
+
 ax1 = subplot(2,2,4);
 yyaxis left
 b1 = bar(1:5,[rf2020;zeros(1,5)]);
@@ -155,16 +159,17 @@ yyaxis right
 b1 = bar(1:5,[zeros(1,5);rf2020p]);
 b1(2).FaceColor = [0.75 0.75 0.75];
 b1(2).EdgeColor = [0.75 0.75 0.75];
-ax1.YColor = [0.5 0.5 0.5]; 
+ax1.YColor = [0.3 0.3 0.3]; 
 ax1.YLim = [0 1];
 ax1.YTick = 0:0.2:1;
+ax1.YTickLabel = {'0','20%','40%','60%','80%','100%'};
 title({'Rainfall(mm)'});
 formatSpec = "%3.1f%s";
-text(1,rf2020p(1)+0.08,sprintf(formatSpec,rf2020p(1)*100,'%'));
-text(2,rf2020p(2)+0.07,sprintf(formatSpec,rf2020p(2)*100,'%'));
-text(3,rf2020p(3)+0.07,sprintf(formatSpec,rf2020p(3)*100,'%'));
-text(4,rf2020p(4)+0.07,sprintf(formatSpec,rf2020p(4)*100,'%'));
-text(5,rf2020p(5)+0.07,sprintf(formatSpec,rf2020p(5)*100,'%'));
+text(1,rf2020p(1)+0.08,sprintf(formatSpec,rf2020p(1)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(2,rf2020p(2)+0.07,sprintf(formatSpec,rf2020p(2)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(3,rf2020p(3)+0.07,sprintf(formatSpec,rf2020p(3)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(4,rf2020p(4)+0.07,sprintf(formatSpec,rf2020p(4)*100,'%'),'Color',[0.3 0.3 0.3]);
+text(5,rf2020p(5)+0.07,sprintf(formatSpec,rf2020p(5)*100,'%'),'Color',[0.3 0.3 0.3]);
 
 set(gcf,'Position',[1,1,800,400]);
 savename = ['D:\DATA\OTTParsivel\Pictures\new\','Rainfall_perc_non.png'];
