@@ -82,6 +82,11 @@ ax1.XTickLabel = {'LR','MR','HR','VR','VVR'};
 % ax1.YLabel.String = 'Rainfall(mm)';
 ax1.YLim = [0 400];
 ax1.YTick = 0:100:400;
+text(0.55,rf2019(1)+30,sprintf('%3.1f',rf2019(1)));
+text(1.6,rf2019(2)+30,sprintf('%3.1f',rf2019(2)));
+text(2.6,rf2019(3)+30,sprintf('%3.1f',rf2019(3)));
+text(3.6,rf2019(4)+30,sprintf('%3.1f',rf2019(4)));
+
 yyaxis right
 b1 = bar(1:5,[zeros(1,5);rf2019p]);
 b1(2).FaceColor = [0.75 0.75 0.75];
@@ -90,7 +95,12 @@ ax1.YColor = [0.5 0.5 0.5];
 ax1.YLim = [0 1];
 ax1.YTick = 0:0.2:1;
 title({'Rainfall(mm)'});
-
+formatSpec = "%3.1f%s";
+text(1,rf2019p(1)+0.08,sprintf(formatSpec,rf2019p(1)*100,'%'));
+text(2,rf2019p(2)+0.07,sprintf(formatSpec,rf2019p(2)*100,'%'));
+text(3,rf2019p(3)+0.07,sprintf(formatSpec,rf2019p(3)*100,'%'));
+text(4,rf2019p(4)+0.07,sprintf(formatSpec,rf2019p(4)*100,'%'));
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ax1 = subplot(2,2,2);
 yyaxis left
 b1 = bar(1:5,[rd2020;zeros(1,5)]);
@@ -107,7 +117,7 @@ text(0.55,rd2020(1)+12,sprintf('%d',rd2020(1)));
 text(1.65,rd2020(2)+12,sprintf('%d',rd2020(2)));
 text(2.7,rd2020(3)+12,sprintf('%d',rd2020(3)));
 text(3.8,rd2020(4)+12,sprintf('%d',rd2020(4)));
-text(4.8,rd2020(5)+12,sprintf('%d',rd2020(5)));
+text(4.8,rd2020(5)+13,sprintf('%d',rd2020(5)));
 yyaxis right
 b1 = bar(1:5,[zeros(1,5);rd2020p]);
 b1(2).FaceColor = [0.75 0.75 0.75];
@@ -136,6 +146,11 @@ ax1.XTickLabel = {'LR','MR','HR','VR','VVR'};
 % ax1.YLabel.String = 'Rainfall(mm)';
 ax1.YLim = [0 800];
 ax1.YTick = 0:200:800;
+text(0.55,rf2020(1)+50,sprintf('%3.1f',rf2020(1)));
+text(1.6,rf2020(2)+50,sprintf('%3.1f',rf2020(2)));
+text(2.6,rf2020(3)+50,sprintf('%3.1f',rf2020(3)));
+text(3.6,rf2020(4)+50,sprintf('%3.1f',rf2020(4)));
+text(4.6,rf2020(5)+50,sprintf('%3.1f',rf2020(5)));
 yyaxis right
 b1 = bar(1:5,[zeros(1,5);rf2020p]);
 b1(2).FaceColor = [0.75 0.75 0.75];
@@ -144,6 +159,12 @@ ax1.YColor = [0.5 0.5 0.5];
 ax1.YLim = [0 1];
 ax1.YTick = 0:0.2:1;
 title({'Rainfall(mm)'});
+formatSpec = "%3.1f%s";
+text(1,rf2020p(1)+0.08,sprintf(formatSpec,rf2020p(1)*100,'%'));
+text(2,rf2020p(2)+0.07,sprintf(formatSpec,rf2020p(2)*100,'%'));
+text(3,rf2020p(3)+0.07,sprintf(formatSpec,rf2020p(3)*100,'%'));
+text(4,rf2020p(4)+0.07,sprintf(formatSpec,rf2020p(4)*100,'%'));
+text(5,rf2020p(5)+0.07,sprintf(formatSpec,rf2020p(5)*100,'%'));
 
 set(gcf,'Position',[1,1,800,400]);
 savename = ['D:\DATA\OTTParsivel\Pictures\new\','Rainfall_perc_non.png'];
