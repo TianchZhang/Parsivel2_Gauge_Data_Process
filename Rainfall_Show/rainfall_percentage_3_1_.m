@@ -1,19 +1,16 @@
 %Description:
-%show rain day percentage
+%Diurnal variations of rainfall percentage
 % History:
-% 2021.09.16 by zhangtc
+% 2021.09.27 by zhangtc
 
-mons = {'Jun.','Jul.','Aug.','Sept.','Oct.',...
-    'Nov.','Dec.','Jan.','Feb.','Mar.','Apr.','May.'};
+rain2019 = zeros(1,24);
+rain2020 = zeros(1,24);
 
-rain2019_2020 = zeros(1,24);
-rain2020_2021 = zeros(1,24);
 rain2019con = zeros(1,24);
 rain2020con = zeros(1,24);
 rain2019str = zeros(1,24);
 rain2020str = zeros(1,24);
-
-file_root = 'D:\DATA\OTTParsivel\nonQC2019-\';
+ile_root = 'D:\DATA\OTTParsivel\nonQC2019-\';
 file_day = dir([file_root,'*.h5']);
 
 temp_time2019 = datenum(2019,5,31);
@@ -49,18 +46,3 @@ for fnum = 1 : length(file_day)
         end
     end
 end
-
-rain = rain2019_2020 + rain2020_2021;
-rain_con = rain2019con + rain2020con;
-rain_str = rain2019str + rain2020str;
-% save('D:\DATA\Parsivel_temporary\Rain_on_non.mat',...
-%     'rainfall2019_2020','rainfall2019_2020mo',...
-%     'rainfall2020_2021','rainfall2020_2021mo',...
-%     'rainrate2019_2020','rainrate2020_2021',...
-%     'statistics');
-% save('E:\DATA\Parsivel_temporary\Rain_on_non.mat',...
-%     'rainfall2019_2020','rainfall2019_2020mo',...
-%     'rainfall2020_2021','rainfall2020_2021mo',...
-%     'rainrate2019_2020','rainrate2020_2021',...
-%     'statistics');
-% clear

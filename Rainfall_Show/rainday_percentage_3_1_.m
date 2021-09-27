@@ -172,6 +172,5 @@ text(4,rf2020p(4)+0.07,sprintf(formatSpec,rf2020p(4)*100,'%'),'Color',[0.3 0.3 0
 text(5,rf2020p(5)+0.07,sprintf(formatSpec,rf2020p(5)*100,'%'),'Color',[0.3 0.3 0.3]);
 
 set(gcf,'Position',[1,1,800,400]);
-savename = ['D:\DATA\OTTParsivel\Pictures\new\','Rainfall_perc_non.png'];
-saveas(gcf,savename);
+saveas(gcf,['D:\DATA\OTTParsivel\Pictures\new\','Rainfall_perc_non.png']);
 saveas(gcf,['E:\DATA\OTTParsivel\Pictures\new\','Rainfall_perc_non.png']);
