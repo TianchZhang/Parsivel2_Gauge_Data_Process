@@ -4,6 +4,7 @@
 % 2021.09.13 by zhangtc
 
 %daily rainfall
+clear
 load('D:\DATA\Parsivel_temporary\Rainfall_data_non.mat',...
     'rainfall2019_2020', 'rainfall2020_2021');
 rainfall2019 = sum(rainfall2019_2020);
