@@ -65,7 +65,7 @@ ax.LineWidth = 1.2;
 ax.XLim = [1 24];
 ax.XTick = 0:3:24;
 ax.XTickLabel = {'0:00','3:00','6:00','9:00','12:00','15:00','18:00','21:00','24:00'};
-ax.YLabel.String = 'Frequency(%)';
+ax.YLabel.String = 'Percentage(%)';
 legend('Location','north');
 title('Diurnal variations of rainfall percentage');
 set(gcf,'Position',[1,1,600,400]);
