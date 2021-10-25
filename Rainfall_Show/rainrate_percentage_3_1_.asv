@@ -40,7 +40,7 @@ end
 figure;
 ax = gca;
 x = 1:24;
-p = plot(x,R1./sum(R1),x,R2./sum(R2),x,R3./sum(R3),x,R4./sum(R4),x,R5./sum(R5),x,R6./sum(R6),'LineWidth',2);
+p = plot(x,R1,x,R2,x,R3,x,R4,x,R5,x,R6,'LineWidth',2);
 ax.FontSize = 10;
 ax.TickLength = [0.01 0.01];
 ax.LineWidth = 1.2;
@@ -50,6 +50,6 @@ ax.XTickLabel = {'0:00','3:00','6:00','9:00','12:00','15:00','18:00','21:00','24
 ax.YLabel.String = 'Frequency';
 legend('R1','R2','R3','R4','R5','R6','Location','northwest','NumColumns',2);
 title('Diurnal variations of rainrate frequency');
-set(gcf,'Position',[1,1,600,400]);
-% saveas(gcf,['D:\DATA\OTTParsivel\Pictures\new\','Rainrate_non.png']);
+set(gcf,'Position',[1,1,600,300]);
+saveas(gcf,['D:\DATA\OTTParsivel\Pictures\new\','Rainrate_non.png']);
 % saveas(gcf,['E:\DATA\OTTParsivel\Pictures\new\','Rainrate_non.png']);

@@ -68,6 +68,6 @@ ax.XTickLabel = {'0:00','3:00','6:00','9:00','12:00','15:00','18:00','21:00','24
 ax.YLabel.String = 'Percentage(%)';
 legend('Location','north');
 title('Diurnal variations of rainfall percentage');
-set(gcf,'Position',[1,1,600,400]);
+set(gcf,'Position',[1,1,600,300]);
 saveas(gcf,['D:\DATA\OTTParsivel\Pictures\new\','Rainfall_non.png']);
 % saveas(gcf,['E:\DATA\OTTParsivel\Pictures\new\','Rainfall_non.png']);

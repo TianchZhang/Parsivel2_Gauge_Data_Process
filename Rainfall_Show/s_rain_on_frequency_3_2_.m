@@ -110,7 +110,7 @@ ax2.YLabel.String = 'Frequency';
 text(1.5,225,'(b)2020');
 legend('Spr.','Sum.','Aut.','Win.','Location','northeast','NumColumns',2);
 set(gcf,'Position',[1,1,600,400]);
-saveas(gcf,['D:\DATA\OTTParsivel\Pictures\new\','con_Rainon_non_Seanson.png']);
+% saveas(gcf,['D:\DATA\OTTParsivel\Pictures\new\','con_Rainon_non_Seanson.png']);
 
 figure(2);
 subplot(2,1,1);
@@ -142,7 +142,7 @@ ax2.YLabel.String = 'Frequency';
 text(1.5,315,'(b)2020');
 legend('Spr.','Sum.','Aut.','Win.','Location','northeast','NumColumns',2);
 set(gcf,'Position',[1,1,600,400]);
-saveas(gcf,['D:\DATA\OTTParsivel\Pictures\new\','str_Rainon_non_Season.png']);
+% saveas(gcf,['D:\DATA\OTTParsivel\Pictures\new\','str_Rainon_non_Season.png']);
 
 
 % clear
