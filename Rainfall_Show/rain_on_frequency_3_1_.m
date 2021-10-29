@@ -1,8 +1,8 @@
 %Description:
-%show rain day percentage
+%Diurnal variations of precipitaion frequency
 % History:
 % 2021.09.16 by zhangtc
-
+clear
 mons = {'Jun.','Jul.','Aug.','Sept.','Oct.',...
     'Nov.','Dec.','Jan.','Feb.','Mar.','Apr.','May.'};
 
@@ -53,14 +53,24 @@ end
 rain = rain2019_2020 + rain2020_2021;
 rain_con = rain2019con + rain2020con;
 rain_str = rain2019str + rain2020str;
-% save('D:\DATA\Parsivel_temporary\Rain_on_non.mat',...
-%     'rainfall2019_2020','rainfall2019_2020mo',...
-%     'rainfall2020_2021','rainfall2020_2021mo',...
-%     'rainrate2019_2020','rainrate2020_2021',...
-%     'statistics');
-% save('E:\DATA\Parsivel_temporary\Rain_on_non.mat',...
-%     'rainfall2019_2020','rainfall2019_2020mo',...
-%     'rainfall2020_2021','rainfall2020_2021mo',...
-%     'rainrate2019_2020','rainrate2020_2021',...
-%     'statistics');
+figure;
+ax = gca;
+p1 = plot(rain,'DisplayName','Total','Color','k','LineStyle','-','LineWidth',2);
+hold on;
+p2 = plot(rain_con,'DisplayName','Convective','Color','k','LineStyle','--','LineWidth',2);
+p3 = plot(rain_str,'DisplayName','Stratiform','Color','k','LineStyle',':','LineWidth',2);
+hold off;
+ax.FontSize = 10;
+ax.TickLength = [0.01 0.01];
+ax.LineWidth = 1.2;
+ax.XLim = [1 24];
+ax.XTick = 0:3:24;
+ax.XTickLabel = {'0:00','3:00','6:00','9:00','12:00','15:00','18:00','21:00','24:00'};
+ax.YLabel.String = 'Frequency';
+legend('Location','Northwest');
+title('Diurnal variations of precipitaion frequency');
+set(gcf,'Position',[1,1,600,300]);
+saveas(gcf,['D:\DATA\OTTParsivel\Pictures\new\','Rainon_non.png']);
+% saveas(gcf,['E:\DATA\OTTParsivel\Pictures\new\','Rainon_non.png']);
+
 % clear
