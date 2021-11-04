@@ -13,7 +13,7 @@ rain2020con = zeros(1,24);
 rain2019str = zeros(1,24);
 rain2020str = zeros(1,24);
 
-file_root = 'D:\DATA\OTTParsivel\nonQC2019-\';
+file_root = 'E:\DATA\OTTParsivel\nonQC2019-\';
 file_day = dir([file_root,'*.h5']);
 
 temp_time2019 = datenum(2019,5,31);
