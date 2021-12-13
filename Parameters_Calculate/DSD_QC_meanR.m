@@ -8,7 +8,7 @@ clear;
 nonrain = ["20190404";"20190405";"20190406";"20190407";...
     "20191218";"20200109";"20200115";"20200116";"20200125";...
     "20200215";"20201213";"20201214";"20201229"];
-savepath ='D:\DATA\OTTParsivel\QC2019-\';
+savepath ='D:\DATA\OTTParsivel\QC2019_meanR-\';
 file_root = 'D:\DATA\OTTParsivel\57494\Mputu\';
 file_day = dir(file_root);
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','speed_coe');
