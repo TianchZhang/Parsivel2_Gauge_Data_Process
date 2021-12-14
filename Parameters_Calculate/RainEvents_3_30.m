@@ -30,17 +30,17 @@ for fnum = 1 : length(file_day)
         rainflag = h5read(fname,'/rainflag');
         typeflag = h5read(fname,'/typeflag');
         if sum(rainflag) > 10
-            cons5 = circshift(smooth(rainflag,5),-2);
-            cons5(1437:1440) = 0;
+            cons5 = circshift(smooth(rainflag,3),-1);
+            cons5(1439:1440) = 0;
             loc5 = find(cons5 ==1);
             nloc5 = length(loc5);
             if nloc5 > 0
                 temploc5 = circshift(loc5,-1);
-                temploc5(nloc5) = 1437;
+                temploc5(nloc5) = 1439;
                 inter30 = find((temploc5 - loc5) > 30);
                 count = length(inter30);
                 
-                if 1437 - loc5(nloc5) < 30
+                if 1439 - loc5(nloc5) < 30
                     nrain = count + 1;
                     rainloc = zeros(nrain,3);
                     for inum = 1:nrain
@@ -50,9 +50,9 @@ for fnum = 1 : length(file_day)
                             rainloc(inum,1) = temploc5(inter30(inum-1));
                         end
                         if inum == nrain
-                            rainloc(inum,2) = loc5(nloc5)+4;
+                            rainloc(inum,2) = loc5(nloc5)+2;
                         else
-                            rainloc(inum,2) = loc5(inter30(inum))+4;
+                            rainloc(inum,2) = loc5(inter30(inum))+2;
                         end
                         rainloc(inum,3) = sum(rainflag(rainloc(inum,1):rainloc(inum,2)));
                     end
@@ -65,7 +65,7 @@ for fnum = 1 : length(file_day)
                         else
                             rainloc(inum,1) = temploc5(inter30(inum-1));
                         end
-                        rainloc(inum,2) = loc5(inter30(inum))+4;
+                        rainloc(inum,2) = loc5(inter30(inum))+2;
                         rainloc(inum,3) = sum(rainflag(rainloc(inum,1):rainloc(inum,2)));
                     end
                 end
@@ -135,11 +135,11 @@ for fnum = 1 : length(file_day)
         end
     end
 end
-save('D:\DATA\Parsivel_temporary\Rainevents-allR-5-30.mat',...
+save('D:\DATA\Parsivel_temporary\Rainevents-allR-3-30.mat',...
     'Rainev_day','Rainev_detal','Rainev_day_30','Rainev_detal_30',...
     'Conv_day','Conv_detal','Conv_day_30','Conv_detal_30',...
     'Stra_day','Stra_detal','Stra_day_30','Stra_detal_30');
-save('E:\DATA\Parsivel_temporary\Rainevents-allR-5-30.mat',...
+save('E:\DATA\Parsivel_temporary\Rainevents-allR-3-30.mat',...
     'Rainev_day','Rainev_detal','Rainev_day_30','Rainev_detal_30',...
     'Conv_day','Conv_detal','Conv_day_30','Conv_detal_30',...
     'Stra_day','Stra_detal','Stra_day_30','Stra_detal_30');

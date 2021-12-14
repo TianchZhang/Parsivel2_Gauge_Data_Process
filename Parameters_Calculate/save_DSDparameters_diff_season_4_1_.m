@@ -5,8 +5,8 @@
 
 %2019.06-2021.05
 clear
-load('D:\DATA\Parsivel_temporary\Rainevents-allR.mat','Rainev_day_30');
-load('D:\DATA\Parsivel_temporary\Rainevents-allR.mat','Rainev_detal_30');
+load('D:\DATA\Parsivel_temporary\Rainevents-allR-3-30.mat','Rainev_day_30');
+load('D:\DATA\Parsivel_temporary\Rainevents-allR-3-30.mat','Rainev_detal_30');
 
 %
 ND_conv_2019sum = [];

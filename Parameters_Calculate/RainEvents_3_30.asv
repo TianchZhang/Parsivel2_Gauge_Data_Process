@@ -30,7 +30,7 @@ for fnum = 1 : length(file_day)
         rainflag = h5read(fname,'/rainflag');
         typeflag = h5read(fname,'/typeflag');
         if sum(rainflag) > 10
-            cons5 = circshift(smooth(rainflag,5),-2);
+            cons5 = circshift(smooth(rainflag,3),-1);
             cons5(1437:1440) = 0;
             loc5 = find(cons5 ==1);
             nloc5 = length(loc5);
