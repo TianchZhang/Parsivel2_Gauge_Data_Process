@@ -104,7 +104,12 @@ for fnum = 3:length(file_day)
         end
         
         Rainfall = sum(RR)./60;
-        
+        for hh = 1:24
+           Rainfall_h(hh) = sum(RR((hh-1)*60+1:hh*60))./60;  
+           if Rainfall_h(hh) < 0.01
+                Rainfall_h(hh)=0;
+            end
+        end
         if any(rainflag > 0)
             temp_rf = rainflag;
             temp_rf(RR < 0.1) = 0;
@@ -163,6 +168,9 @@ for fnum = 3:length(file_day)
             hdf5writedata(savename, '/Rainfall', Rainfall, ...
                 'dataAttr', ...
                 struct('Units', 'mm', 'long_name', 'rainfall'));
+            hdf5writedata(savename, '/Rainfall_h', Rainfall_h, ...
+                'dataAttr', ...
+                struct('Units', 'mm', 'long_name', 'rainfall per hour'));
             
             hdf5writedata(savename, '/LWC', LWC, ...
                 'dataAttr', ...

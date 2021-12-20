@@ -2,7 +2,7 @@
 %calculate DSD-parameters seasonly
 % History:
 % 2021.12.19 by zhangtc
-
+%%
 %2019.06-2021.05
 clear
 load('D:\DATA\Parsivel_temporary\Rainevents-allR-3-30.mat','Rainev_day_30');
@@ -345,6 +345,48 @@ mu_conv_2020spr_ev = [];
 lamd_stra_2020spr_ev = [];
 lamd_conv_2020spr_ev = [];
 %
+ND_conv_2021sum = [];
+ND_stra_2021sum =[];
+Nw_conv_2021sum = [];
+Nw_stra_2021sum = [];
+N0_stra_2021sum = [];
+N0_conv_2021sum = [];
+Dm_conv_2021sum = [];
+Dm_stra_2021sum = [];
+Delt_m_stra_2021sum = [];
+Delt_m_conv_2021sum = [];
+LWC_stra_2021sum = [];
+LWC_conv_2021sum = [];
+RR_conv_2021sum = [];
+RR_stra_2021sum = [];
+Z_conv_2021sum = [];
+Z_stra_2021sum = [];
+mu_stra_2021sum = [];
+mu_conv_2021sum = [];
+lamd_stra_2021sum = [];
+lamd_conv_2021sum = [];
+%
+ND_conv_2021sum = [];
+ND_stra_2021sum =[];
+Nw_conv_2021sum = [];
+Nw_stra_2021sum = [];
+N0_stra_2021sum = [];
+N0_conv_2021sum = [];
+Dm_conv_2021sum = [];
+Dm_stra_2021sum = [];
+Delt_m_stra_2021sum = [];
+Delt_m_conv_2021sum = [];
+LWC_stra_2021sum = [];
+LWC_conv_2021sum = [];
+RR_conv_2021sum = [];
+RR_stra_2021sum = [];
+Z_conv_2021sum = [];
+Z_stra_2021sum = [];
+mu_stra_2021sum = [];
+mu_conv_2021sum = [];
+lamd_stra_2021sum = [];
+lamd_conv_2021sum_ev = [];
+
 for inum = 1:length(Rainev_day_30)
     mkey = fix(str2num(Rainev_day_30{inum,1})/100);
     fname = ['D:\DATA\OTTParsivel\nonQC2019-\',Rainev_day_30{inum,1},'.h5'];

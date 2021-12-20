@@ -9,13 +9,13 @@ nonrain = ["20190404";"20190405";"20190406";"20190407";...
     "20191218";"20200109";"20200115";"20200116";"20200125";...
     "20200215";"20201213";"20201214";"20201229"];
 savepath ='D:\DATA\OTTParsivel\QC2019-\';
-file_root = 'D:\DATA\OTTParsivel\57494\Mputu\';
+file_root = 'E:\DATA\OTTParsivel\57494\Mputu\';
 file_day = dir(file_root);
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','speed_coe');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_dia_qc');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','dia_bandwidth_qc');
-for fnum = 3:length(file_day)
+for fnum = 396:length(file_day)
     if ~any(contains(nonrain,file_day(fnum).name))
         fname = [file_root,file_day(fnum).name];
         
@@ -104,7 +104,12 @@ for fnum = 3:length(file_day)
         end
         
         Rainfall = sum(RR)./60;
-        
+        for hh = 1:24
+           Rainfall_h(hh) = sum(RR((hh-1)*60+1:hh*60))./60;  
+           if Rainfall_h(hh) < 0.01
+                Rainfall_h(hh)=0;
+            end
+        end
         if any(rainflag > 0)
             temp_rf = rainflag;
             temp_rf(RR < 0.1) = 0;
@@ -163,6 +168,9 @@ for fnum = 3:length(file_day)
             hdf5writedata(savename, '/Rainfall', Rainfall, ...
                 'dataAttr', ...
                 struct('Units', 'mm', 'long_name', 'rainfall'));
+            hdf5writedata(savename, '/Rainfall_h', Rainfall_h, ...
+                'dataAttr', ...
+                struct('Units', 'mm', 'long_name', 'rainfall per hour'));
             
             hdf5writedata(savename, '/LWC', LWC, ...
                 'dataAttr', ...

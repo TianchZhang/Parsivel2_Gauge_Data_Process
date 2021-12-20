@@ -3,68 +3,64 @@
 % History:
 % 2021.12.19 by zhangtc
 
-clear
 %%
 %ND-seansons
 clear
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
 load('D:\DATA\Parsivel_temporary\DSD_parameters_difseason.mat');
+figure;
 
-subplot(2,2,1)
-p1=plot(central_diameter,mean(ND_conv_2019sum_ev),'b');
+subplot(2,2,1);
+p1=plot(central_diameter,mean(ND_conv_2019sum),'b');
 p1.Marker = 'd';
 p1.MarkerSize = 2;
 p1.MarkerFaceColor = 'b';
 p1.LineStyle = ':';
 hold on
-p2=plot(central_diameter,mean(ND_conv_2019aut_ev,1),'g');
-p2.Marker = 'd';
-p2.MarkerSize = 2;
-p2.MarkerFaceColor = 'g';
-p2.LineStyle = ':';
-p3=plot(central_diameter,mean(ND_conv_2019win_ev),'c');
+% p2=plot(central_diameter,mean(ND_conv_2019aut),'g');
+% p2.Marker = 'd';
+% p2.MarkerSize = 2;
+% p2.MarkerFaceColor = 'g';
+% p2.LineStyle = ':';
+p3=plot(central_diameter,mean(ND_conv_2019win),'c');
 p3.Marker = 'd';
 p3.MarkerSize = 2;
 p3.MarkerFaceColor = 'c';
 p3.LineStyle = ':';
-p4=plot(central_diameter,mean(ND_conv_2019spr_ev),'r');
+p4=plot(central_diameter,mean(ND_conv_2019spr),'r');
 p4.Marker = 'd';
 p4.MarkerSize = 2;
 p4.MarkerFaceColor = 'r';
 p4.LineStyle = ':';
-legend('Sum.','Aut.','Win.','Spr.');
+legend('Sum.','Win.','Spr.');
 hold off
-ax = gca;
-ax.XLim = [0 8];
-ax.XTick = 0:1:8;
-ax.YScale = 'log';
-ax.YLim = [0.0001 10000];
-ax.Box = 'on';
-ax.FontSize = 10;
-ax.TickLength = [0.01 0.01];
-ax.LineWidth = 1.5;
-% ax.XLabel.String = 'D(mm)';
-ax.YLabel.String = 'N(D)(m^{-3}\cdotmm^{-1})';
+
 text(0.5,0.0008,{'(a) 2019.06-2020.05'});
 title({'Convective'});
-subplot(2,2,2)
-p1=plot(central_diameter,mean(ND_stra_2019sum_ev),'b');
+ax1.FontSize = 12;
+ax1.TickLength = [0.01 0.01];
+ax1.LineWidth = 1.2;
+% ax.XLabel.String = 'D(mm)';
+ax1.YLabel.String = 'N(D)(m^{-3}\cdotmm^{-1})';
+
+subplot(2,2,2);
+p1=plot(central_diameter,mean(ND_stra_2019sum),'b');
 p1.Marker = 's';
 p1.MarkerSize = 2;
 p1.MarkerFaceColor = 'b';
 p1.LineStyle = ':';
 hold on
-p2=plot(central_diameter,mean(ND_stra_2019aut_ev),'g');
+p2=plot(central_diameter,mean(ND_stra_2019aut),'g');
 p2.Marker = 's';
 p2.MarkerSize = 2;
 p2.MarkerFaceColor = 'g';
 p2.LineStyle = ':';
-p3=plot(central_diameter,mean(ND_stra_2019win_ev),'c');
+p3=plot(central_diameter,mean(ND_stra_2019win),'c');
 p3.Marker = 's';
 p3.MarkerSize = 2;
 p3.MarkerFaceColor = 'c';
 p3.LineStyle = ':';
-p4=plot(central_diameter,mean(ND_stra_2019spr_ev),'r');
+p4=plot(central_diameter,mean(ND_stra_2019spr),'r');
 p4.Marker = 's';
 p4.MarkerSize = 2;
 p4.MarkerFaceColor = 'r';
@@ -97,27 +93,19 @@ p2.Marker = 'd';
 p2.MarkerSize = 2;
 p2.MarkerFaceColor = 'g';
 p2.LineStyle = ':';
-p3=plot(central_diameter,mean(ND_conv_2020win),'c');
-p3.Marker = 'd';
-p3.MarkerSize = 2;
-p3.MarkerFaceColor = 'c';
-p3.LineStyle = ':';
+% p3=plot(central_diameter,mean(ND_conv_2020win),'c');
+% p3.Marker = 'd';
+% p3.MarkerSize = 2;
+% p3.MarkerFaceColor = 'c';
+% p3.LineStyle = ':';
 p4=plot(central_diameter,mean(ND_conv_2020spr),'r');
 p4.Marker = 'd';
 p4.MarkerSize = 2;
 p4.MarkerFaceColor = 'r';
 p4.LineStyle = ':';
-legend('Sum.','Aut.','Win.','Spr.');
+legend('Sum.','Aut.','Spr.');
 hold off
-ax = gca;
-ax.XLim = [0 8];
-ax.XTick = 0:1:8;
-ax.YScale = 'log';
-ax.YLim = [0.0001 10000];
-ax.Box = 'on';
-ax.FontSize = 10;
-ax.TickLength = [0.01 0.01];
-ax.LineWidth = 1.5;
+
 % ax.XLabel.String = 'D(mm)';
 ax.YLabel.String = 'N(D)(m^{-3}\cdotmm^{-1})';
 text(0.5,0.0008,{'(b) 2020.06-2021.05'});
@@ -145,7 +133,6 @@ p4.MarkerFaceColor = 'r';
 p4.LineStyle = ':';
 legend('Sum.','Aut.','Win.','Spr.');
 hold off
-ax = gca;
 ax.XLim = [0 8];
 ax.XTick = 0:1:8;
 ax.YScale = 'log';
@@ -155,7 +142,6 @@ ax.FontSize = 10;
 ax.TickLength = [0.01 0.01];
 ax.LineWidth = 1.5;
 % ax.XLabel.String = 'D(mm)';
-% ax.YLabel.String = 'N(D)(m^{-3}\cdotmm^{-1})';
 text(0.5,0.0008,{'(b) 2020.06-2021.05'});
 set(gcf,'Position',[0 0 900 600]);
 %%

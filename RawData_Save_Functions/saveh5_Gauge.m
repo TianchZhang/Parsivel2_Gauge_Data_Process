@@ -15,7 +15,7 @@
 %       whether to create the save path forcefully.
 %   (optional)Sernum:double
 %       the 'Sernum'th file where function starts.
-%   [h5Filepath] = saveh5_Gauge(Mfolder, Sfile, savePath)
+%   [h5Filepath] = saveh5_Gauge(Gfolder, savePath)
 %   [h5Filepath] = saveh5_Gauge( Gfolder, savePath, 'Sernum',10)
 %Outputs:
 %   h5Filepath: char

@@ -106,6 +106,9 @@ for fnum = 3:length(file_day)
         Rainfall = sum(RR)./60;
         for hh = 1:24
            Rainfall_h(hh) = sum(RR((hh-1)*60+1:hh*60))./60;  
+           if Rainfall_h(hh) < 0.01
+                Rainfall_h(hh)=0;
+            end
         end
         
         if any(rainflag > 0)
