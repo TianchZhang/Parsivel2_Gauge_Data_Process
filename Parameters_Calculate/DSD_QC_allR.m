@@ -32,6 +32,7 @@ for fnum = 396:length(file_day)
         LWC = zeros(1440,1);
         Z = zeros(1440,1);
         Rainfall = 0;
+        Rainfall_h = zeros(24,1);
         
         M2 = zeros(1440,1);
         M3 = zeros(1440,1);
@@ -104,12 +105,13 @@ for fnum = 396:length(file_day)
         end
         
         Rainfall = sum(RR)./60;
-        for hh = 1:24
-           Rainfall_h(hh) = sum(RR((hh-1)*60+1:hh*60))./60;  
-           if Rainfall_h(hh) < 0.01
-                Rainfall_h(hh)=0;
-            end
-        end
+        Rainfall_h = sum(reshape(RR,60,[])).'./60;
+%         for hh = 1:24
+%            Rainfall_h(hh) = sum(RR((hh-1)*60+1:hh*60))./60;  
+%            if Rainfall_h(hh) < 0.01
+%                 Rainfall_h(hh)=0;
+%             end
+%         end
         if any(rainflag > 0)
             temp_rf = rainflag;
             temp_rf(RR < 0.1) = 0;
