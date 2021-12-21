@@ -22,8 +22,6 @@ for fnum = 1 : length(file_day)
     rainfh = h5read(fname,'/Rainfall_h');
     if isfile(['D:\DATA\OTTParsivel\Gauge2019-\','raingauge_wuhan_',file_day(fnum).name])
         %         tempgrainfh = h5read(['D:\DATA\OTTParsivel\Gauge2019-\','raingauge_wuhan_',file_day(fnum).name],'/rainfall_minute');
-        %         tempgrainfh(isnan(tempgrainfh)) = 0;
-        %         grainfh = sum(reshape(tempgrainfh,60,[])).';
         grainfh = h5read(['D:\DATA\OTTParsivel\Gauge2019-\','raingauge_wuhan_',file_day(fnum).name],'/rainf_h');
         loc = find(rainfh);
         temp_t = datenum(fix(str2double(file_day(fnum).name(1:4))),...

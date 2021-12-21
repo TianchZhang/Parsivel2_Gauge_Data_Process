@@ -5,8 +5,8 @@
 %%
 %2019.06-2021.05
 clear
-load('D:\DATA\Parsivel_temporary\Rainevents-allR-3-30.mat','Rainev_day_30');
-load('D:\DATA\Parsivel_temporary\Rainevents-allR-3-30.mat','Rainev_detal_30');
+load('D:\DATA\Parsivel_temporary\Rainevents-allR-3-30.mat','Rainev_day');
+load('D:\DATA\Parsivel_temporary\Rainevents-allR-3-30.mat','Rainev_detal');
 
 %
 ND_conv_2019sum = [];
@@ -387,10 +387,10 @@ mu_conv_2021sum = [];
 lamd_stra_2021sum = [];
 lamd_conv_2021sum_ev = [];
 
-for inum = 1:length(Rainev_day_30)
-    mkey = fix(str2num(Rainev_day_30{inum,1})/100);
-    fname = ['D:\DATA\OTTParsivel\nonQC2019-\',Rainev_day_30{inum,1},'.h5'];
-    rainloc = Rainev_detal_30{inum,1};
+for inum = 1:length(Rainev_day)
+    mkey = fix(str2num(Rainev_day{inum,1})/100);
+    fname = ['D:\DATA\OTTParsivel\nonQC2019-\',Rainev_day{inum,1},'.h5'];
+    rainloc = Rainev_detal{inum,1};
     loclen = size(rainloc,1);
     RR = h5read(fname,'/RR');
     ND = h5read(fname,'/ND');
