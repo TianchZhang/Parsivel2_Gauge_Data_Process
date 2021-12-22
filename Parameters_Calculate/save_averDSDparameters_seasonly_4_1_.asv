@@ -81,7 +81,7 @@ save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'averssumDm','aversautDm','averswinDm','averssprDm','aversDm','-append');
 save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'averssumDm','aversautDm','averswinDm','averssprDm','aversDm','-append');
-clear -regexp Dm_stra_
+clear -regexp LWC_stra_
 %%
 % clear
 load('D:\DATA\Parsivel_temporary\DSD_parameters_difseason.mat','Delt_m_conv_*');
@@ -105,7 +105,6 @@ save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'averssumDelt_m','aversautDelt_m','averswinDelt_m','averssprDelt_m','aversDelt_m','-append');
 save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'averssumDelt_m','aversautDelt_m','averswinDelt_m','averssprDelt_m','aversDelt_m','-append');
-clear -regexp Delt_m_stra_
 %%
 % clear
 load('D:\DATA\Parsivel_temporary\DSD_parameters_difseason.mat','Nw_conv_*');
@@ -118,7 +117,7 @@ save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'avercsumlogNw','avercautlogNw','avercwinlogNw','avercsprlogNw','averclogNw','-append');
 save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'avercsumlogNw','avercautlogNw','avercwinlogNw','avercsprlogNw','averclogNw','-append');
-clear -regexp Nw_conv_
+
 load('D:\DATA\Parsivel_temporary\DSD_parameters_difseason.mat','Nw_stra_*');
 averssumlogNw = mean([Nw_stra_2019sum;Nw_stra_2020sum]);
 aversautlogNw = mean([Nw_stra_2019aut;Nw_stra_2020aut]);
@@ -129,4 +128,3 @@ save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'averssumlogNw','aversautlogNw','averswinlogNw','averssprlogNw','averslogNw','-append');
 save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'averssumlogNw','aversautlogNw','averswinlogNw','averssprlogNw','averslogNw','-append');
-clear -regexp Nw_stra_
