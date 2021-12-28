@@ -10,14 +10,32 @@ avercautRR = mean([RR_conv_2019aut;RR_conv_2020aut]);avercautRainfall = sum([RR_
 avercwinRR = mean([RR_conv_2019win;RR_conv_2020win]);avercwinRainfall = sum([RR_conv_2019win;RR_conv_2020win])./60;
 avercsprRR = mean([RR_conv_2019spr;RR_conv_2020spr]);avercsprRainfall = sum([RR_conv_2019spr;RR_conv_2020spr])./60;
 avercRR = mean(RR_conv_all);cRainfall = sum(RR_conv_all)./60;
+avercsumRRmin = min([RR_conv_2019sum;RR_conv_2020sum]);
+avercautRRmin = min([RR_conv_2019aut;RR_conv_2020aut]);
+avercwinRRmin = min([RR_conv_2019win;RR_conv_2020win]);
+avercsprRRmin = min([RR_conv_2019spr;RR_conv_2020spr]);
+avercRRmin = min(RR_conv_all);
+avercsumRRmax = max([RR_conv_2019sum;RR_conv_2020sum]);
+avercautRRmax = max([RR_conv_2019aut;RR_conv_2020aut]);
+avercwinRRmax = max([RR_conv_2019win;RR_conv_2020win]);
+avercsprRRmax = max([RR_conv_2019spr;RR_conv_2020spr]);
+avercRRmax = max(RR_conv_all);
 save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'avercsumRR','avercautRR','avercwinRR','avercsprRR','avercRR');
 save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'avercsumRainfall','avercautRainfall','avercwinRainfall','avercsprRainfall','cRainfall','-append');
+save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
+    'avercsumRRmin','avercautRRmin','avercwinRRmin','avercsprRRmin','avercRRmin','-append');
+save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
+    'avercsumRRmax','avercautRRmax','avercwinRRmax','avercsprRRmax','avercRRmax','-append');
 save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'avercsumRR','avercautRR','avercwinRR','avercsprRR','avercRR');
 save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'avercsumRainfall','avercautRainfall','avercwinRainfall','avercsprRainfall','cRainfall','-append');
+save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
+    'avercsumRRmin','avercautRRmin','avercwinRRmin','avercsprRRmin','avercRRmin','-append');
+save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
+    'avercsumRRmax','avercautRRmax','avercwinRRmax','avercsprRRmax','avercRRmax','-append');
 clear -regexp RR_conv_
 load('D:\DATA\Parsivel_temporary\DSD_parameters_difseason.mat','RR_stra_*');
 averssumRR = mean([RR_stra_2019sum;RR_stra_2020sum]);averssumRainfall = sum([RR_stra_2019sum;RR_stra_2020sum])./60;
@@ -25,14 +43,32 @@ aversautRR = mean([RR_stra_2019aut;RR_stra_2020aut]);aversautRainfall = sum([RR_
 averswinRR = mean([RR_stra_2019win;RR_stra_2020win]);averswinRainfall = sum([RR_stra_2019win;RR_stra_2020win])./60;
 averssprRR = mean([RR_stra_2019spr;RR_stra_2020spr]);averssprRainfall = sum([RR_stra_2019spr;RR_stra_2020spr])./60;
 aversRR = mean(RR_stra_all);sRainfall = sum(RR_stra_all)./60;
+averssumRRmin = min([RR_stra_2019sum;RR_stra_2020sum]);
+aversautRRmin = min([RR_stra_2019aut;RR_stra_2020aut]);
+averswinRRmin = min([RR_stra_2019win;RR_stra_2020win]);
+averssprRRmin = min([RR_stra_2019spr;RR_stra_2020spr]);
+aversRRmin = min(RR_stra_all);
+averssumRRmax = max([RR_stra_2019sum;RR_stra_2020sum]);
+aversautRRmax = max([RR_stra_2019aut;RR_stra_2020aut]);
+averswinRRmax = max([RR_stra_2019win;RR_stra_2020win]);
+averssprRRmax = max([RR_stra_2019spr;RR_stra_2020spr]);
+aversRRmax = max(RR_stra_all);
 save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'averssumRR','aversautRR','averswinRR','averssprRR','aversRR','-append');
 save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'averssumRainfall','aversautRainfall','averswinRainfall','averssprRainfall','sRainfall','-append');
+save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
+    'averssumRRmin','aversautRRmin','averswinRRmin','averssprRRmin','aversRRmin','-append');
+save('D:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
+    'averssumRRmax','aversautRRmax','averswinRRmax','averssprRRmax','aversRRmax','-append');
 save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'averssumRR','aversautRR','averswinRR','averssprRR','aversRR','-append');
 save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
     'averssumRainfall','aversautRainfall','averswinRainfall','averssprRainfall','sRainfall','-append');
+save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
+    'averssumRRmin','aversautRRmin','averswinRRmin','averssprRRmin','aversRRmin','-append');
+save('E:\DATA\Parsivel_temporary\averDSD_parameters_difseason.mat',...
+    'averssumRRmax','aversautRRmax','averswinRRmax','averssprRRmax','aversRRmax','-append');
 clear -regexp RR_stra_
 %%
 % clear
