@@ -12,12 +12,12 @@ Dm_all = [Dm_all_2019;Dm_all_2020];
 
 figure;
 ax1 = subplot(3,1,1);
-h1 = histogram(Nw_all,1.7:0.1:5.9);
+h1 = histogram(Nw_all,1.65:0.1:5.95);
 h1.Normalization = 'probability';
 h1.FaceColor = '[0 0.5 1]';
 % h1.FaceAlpha = 0.3;
 hold on
-h2 = histogram(Dm_all,0.1:0.1:5.9);
+h2 = histogram(Dm_all,0.05:0.1:5.95);
 h2.Normalization = 'probability';
 h2.FaceColor = '[0 1 0.5]';
 % h2.FaceAlpha = 0.3;
@@ -36,12 +36,12 @@ text(2,0.13,{'Mean = 0.97','STD = 0.41','SK = 2.20'});
 text(4.5,0.13,{'Mean = 3.75','STD = 0.58','SK = -0.11'});
 
 ax2 = subplot(3,1,2);
-h1 = histogram(Nw_conv_all,1.7:0.1:5.9);
+h1 = histogram(Nw_conv_all,1.65:0.1:5.95);
 h1.Normalization = 'probability';
 h1.FaceColor = '[0 0.5 1]';
 % h1.FaceAlpha = 0.3;
 hold on
-h2 = histogram(Dm_conv_all,0.1:0.1:5.9);
+h2 = histogram(Dm_conv_all,0.65:0.1:5.95);
 h2.Normalization = 'probability';
 h2.FaceColor = '[0 1 0.5]';
 % h2.FaceAlpha = 0.3;
@@ -60,12 +60,12 @@ text(2,0.16,{'Mean = 1.84','STD = 0.47','SK = 1.72'});
 text(4.5,0.16,{'Mean = 3.92','STD = 0.35','SK = -2.16'});
 
 ax3 = subplot(3,1,3);
-h1 = histogram(Nw_stra_all,1.7:0.1:5.9);
+h1 = histogram(Nw_stra_all,1.65:0.1:5.95);
 h1.Normalization = 'probability';
 h1.FaceColor = '[0 0.5 1]';
 % h1.FaceAlpha = 0.3;
 hold on
-h2 = histogram(Dm_stra_all,0.1:0.1:5.9);
+h2 = histogram(Dm_stra_all,0.05:0.1:5.95);
 h2.Normalization = 'probability';
 h2.FaceColor = '[0 1 0.5]';
 % h2.FaceAlpha = 0.3;
@@ -85,8 +85,8 @@ text(2,0.13,{'Mean = 1.09','STD = 0.30','SK = 0.62'});
 text(4.5,0.13,{'Mean = 3.93','STD = 0.52','SK = 0.32'});
 
 set(gcf,'Position',[0 0 800 500]);
-% saveas(gcf,'D:\DATA\OTTParsivel\Pictures\new\Dm-Nw_probability.png');
-% saveas(gcf,'E:\DATA\OTTParsivel\Pictures\Dm-Nw_probability.png');
+saveas(gcf,'D:\DATA\OTTParsivel\Pictures\new\Dm-Nw_probability.png');
+saveas(gcf,'E:\DATA\OTTParsivel\Pictures\Dm-Nw_probability.png');
 %%
 mean(Nw_all)
 std(Nw_all)
