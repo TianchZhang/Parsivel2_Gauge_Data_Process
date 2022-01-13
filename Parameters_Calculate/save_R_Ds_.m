@@ -84,10 +84,75 @@ RRDallper = RRDallper.*100;
 RRDconvper = RRDconvper.*100;
 RRDstraper = RRDstraper.*100;
 %%
+clear
+RRDconvper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDconvper');
+RRconv= h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRconv');
 C1 = RRDconvper(RRconv >= 5 & RRconv <6,:).';
-C1sum = cumsum(C1).';
-
-
+C1sum = cumsum(C1);
+C2 = RRDconvper(RRconv >= 6 & RRconv <7,:).';
+C2sum = cumsum(C2);
+C3 = RRDconvper(RRconv >= 7 & RRconv <8,:).';
+C3sum = cumsum(C3);
+C4 = RRDconvper(RRconv >= 8 & RRconv <9,:).';
+C4sum = cumsum(C4);
+C5 = RRDconvper(RRconv >= 9 & RRconv <10,:).';
+C5sum = cumsum(C5);
+C6 = RRDconvper(RRconv >= 10 & RRconv <11,:).';
+C6sum = cumsum(C6);
+C7 = RRDconvper(RRconv >= 11 & RRconv <12,:).';
+C7sum = cumsum(C7);
+C8 = RRDconvper(RRconv >= 12 & RRconv <13,:).';
+C8sum = cumsum(C8);
+C9 = RRDconvper(RRconv >= 13 & RRconv <14,:).';
+C9sum = cumsum(C9);
+C10 = RRDconvper(RRconv >= 14 & RRconv <15,:).';
+C10sum = cumsum(C10);
+C11 = RRDconvper(RRconv >= 15 & RRconv <20,:).';
+C11sum = cumsum(C11);
+C12 = RRDconvper(RRconv >= 20 & RRconv <25,:).';
+C12sum = cumsum(C12);
+C13 = RRDconvper(RRconv >= 25 & RRconv <30,:).';
+C13sum = cumsum(C13);
+C14 = RRDconvper(RRconv >= 30 & RRconv <40,:).';
+C14sum = cumsum(C14);
+C15 = RRDconvper(RRconv >= 40 & RRconv <50,:).';
+C15sum = cumsum(C15);
+C16= RRDconvper(RRconv >= 50 & RRconv <70,:).';
+C16sum = cumsum(C16);
+C17 = RRDconvper(RRconv >= 70 & RRconv <100,:).';
+C17sum = cumsum(C17);
+C18 = RRDconvper(RRconv >= 100,:).';
+C18sum = cumsum(C18);
+%%
+% clear
+RRDstraper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDstraper');
+RRstra= h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRstra');
+S1 = RRDstraper(RRstra >= 0.5 & RRstra <0.6,:).';
+S1sum = cumsum(S1);
+S11 = RRDstraper(RRstra >= 0.6 & RRstra <0.7,:).';
+S11sum = cumsum(S11);
+S12 = RRDstraper(RRstra >= 0.7 & RRstra <0.8,:).';
+S12sum = cumsum(S12);
+S13 = RRDstraper(RRstra >= 0.8 & RRstra <0.9,:).';
+S13sum = cumsum(S13);
+S14 = RRDstraper(RRstra >= 0.9 & RRstra <1,:).';
+S14sum = cumsum(S14);
+S2 = RRDstraper(RRstra >= 1 & RRstra <1.5,:).';
+S2sum = cumsum(S2);
+S3 = RRDstraper(RRstra >= 1.5 & RRstra <2,:).';
+S3sum = cumsum(S3);
+S4 = RRDstraper(RRstra >= 2 & RRstra <2.5,:).';
+S4sum = cumsum(S4);
+S5 = RRDstraper(RRstra >= 2.5 & RRstra <3,:).';
+S5sum = cumsum(S5);
+S6 = RRDstraper(RRstra >= 3 & RRstra <3.5,:).';
+S6sum = cumsum(S6);
+S7 = RRDstraper(RRstra >= 3.5 & RRstra <4,:).';
+S7sum = cumsum(S7);
+S8 = RRDstraper(RRstra >= 4 & RRstra <4.5,:).';
+S8sum = cumsum(S8);
+S9 = RRDstraper(RRstra >= 4.5 & RRstra <5,:).';
+S9sum = cumsum(S9);
 
 %%
 savename = 'D:\DATA\Parsivel_temporary\RDlevels.h5';
