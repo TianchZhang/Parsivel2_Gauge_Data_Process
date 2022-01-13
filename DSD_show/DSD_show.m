@@ -17,7 +17,7 @@ temp_centr_dia = central_diameter;
 temp_dia_bandw = diameter_bandwidth;
 
 file_day = dir([file_root,'*.h5']);
-for fnum = 433 : length(file_day)
+for fnum = 434 : length(file_day)
     fname = [file_root,file_day(fnum).name];
     ND = h5read(fname,'/ND');
     RR = h5read(fname,'/RR');

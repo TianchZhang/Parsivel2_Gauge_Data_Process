@@ -16,7 +16,7 @@ load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','speed_coe');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','diameter_bandwidth');
-for fnum = 3:length(file_day)
+for fnum = 880:886%length(file_day)
     if ~any(contains(nonrain,file_day(fnum).name))
         fname = [file_root,file_day(fnum).name];
         Mputu = zeros(32,32,1440);
