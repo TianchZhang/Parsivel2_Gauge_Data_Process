@@ -134,9 +134,43 @@ C17sum = cumsum(C17);
 C18 = RRDconvper(RRconv >= 100,:).';
 C18sum = cumsum(C18);
 %%
-% clear
+figure;
+set(gcf,'Position',get(0,'screensize'));
+Carr = {C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18};
+for Ck = 1:18
+    figure(Ck);
+    set(gcf,'Position',get(0,'screensize'));
+    title(['Cpeak',num2str(Ck)]);
+    for k = 1:length(Carr{Ck}(1,:))
+        ax(k) = subplot(ceil(sqrt(length(Carr{Ck}(1,:)))),ceil(sqrt(length(Carr{Ck}(1,:)))),k);
+        plot(tempx,Carr{Ck}(:,k));
+        %     plot(C1(:,k));
+        findpeaks(Carr{Ck}(:,k),tempx,'MinPeakHeight',12,'MinPeakProminence',5,'MinPeakDistance',0.5);
+        [pks,locs] = findpeaks(Carr{Ck}(:,k),tempx,'MinPeakHeight',12,'MinPeakProminence',5,'MinPeakDistance',0.5); 
+    end
+    
+    saveas(gcf,['D:\DATA\OTTParsivel\Pictures\',['Cpeak',num2str(Ck)],'.png']);
+    saveas(gcf,['E:\DATA\OTTParsivel\Pictures\new\',['Cpeak',num2str(Ck)],'.png']);
+    close
+end
+%%
+figure;
+set(gcf,'Position',get(0,'screensize'));
+subplot(3,6,1);
+mtemp = diff(C1sum)./diff(tempx)
+[tempm,ni] = max(mtemp);
+h = histogram(ni,'BinEdges',4.5:1:15.5);
+subplot(3,6,2);
+[tempm,ni] = max(diff(C2sum)./diff(tempx));
+h = histogram(ni,'BinEdges',4.5:1:15.5);
+
+%%
+clear
 RRDstraper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDstraper');
 RRstra= h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRstra');
+load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
+tempx = central_diameter(3:23).';
+clear central_diameter
 S1 = RRDstraper(RRstra >= 0.5 & RRstra <0.6,:).';
 S1sum = cumsum(S1);
 S11 = RRDstraper(RRstra >= 0.6 & RRstra <0.7,:).';
@@ -163,7 +197,28 @@ S8 = RRDstraper(RRstra >= 4 & RRstra <4.5,:).';
 S8sum = cumsum(S8);
 S9 = RRDstraper(RRstra >= 4.5 & RRstra <5,:).';
 S9sum = cumsum(S9);
-
+%%
+figure;
+set(gcf,'Position',get(0,'screensize'));
+Sarr = {S1,S2,S3,S4,S5,S6,S7,S8,S9,S11,S12,S13,S14};
+for Sk = 8:9
+    figure(Sk);
+    set(gcf,'Position',get(0,'screensize'));
+    title(['Speak',num2str(Sk)]);
+    for k = 1:length(Sarr{Sk}(1,:))
+        ax(k) = subplot(ceil(sqrt(length(Sarr{Sk}(1,:)))),ceil(sqrt(length(Sarr{Sk}(1,:)))),k);
+        plot(tempx,Sarr{Sk}(:,k));
+        %     plot(S1(:,k));
+        findpeaks(Sarr{Sk}(:,k),tempx,'MinPeakHeight',12,'MinPeakProminence',5,'MinPeakDistance',0.5);
+%         [pks,locs] = findpeaks(Carr{Sk}(:,k),tempx);
+        %     [pks,locs,w,p] = findpeaks(S1(:,k));
+       
+    end
+    
+    saveas(gcf,['D:\DATA\OTTParsivel\Pictures\',['Speak',num2str(Sk)],'.png']);
+    saveas(gcf,['E:\DATA\OTTParsivel\Pictures\new\',['Speak',num2str(Sk)],'.png']);
+    close
+end
 %%
 savename = 'D:\DATA\Parsivel_temporary\RDlevels.h5';
 savenamee = 'E:\DATA\Parsivel_temporary\RDlevels.h5';

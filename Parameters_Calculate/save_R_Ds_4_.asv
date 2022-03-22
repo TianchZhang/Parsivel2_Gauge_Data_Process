@@ -87,17 +87,16 @@ end
 RRDallper = RRDallper.*100;
 RRDconvper = RRDconvper.*100;
 RRDstraper = RRDstraper.*100;
-save('',);
+save('D:\DATA\Parsivel_temporary\RDlevels.mat','RRDall','RRDallper','RRall',...
+    'RRDconv','RRDconvper','RRconv','RRDconvday','RRDstra','RRDstraper','RRstra','RRDstraday');
+save('E:\DATA\Parsivel_temporary\RDlevels.mat','RRDall','RRDallper','RRall',...
+    'RRDconv','RRDconvper','RRconv','RRDconvday','RRDstra','RRDstraper','RRstra','RRDstraday');
 %%
 clear
 RRDconvper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDconvper');
 RRconv= h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRconv');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
-<<<<<<< HEAD:Parameters_Calculate/save_R_Ds_4_.asv
-=======
 tempx = central_diameter(3:23).';
-clear central_diameter
->>>>>>> 179fb1cea5d083a0bb45d8a70e778a2fecfbf592:Parameters_Calculate/save_R_Ds_.m
 C1 = RRDconvper(RRconv >= 5 & RRconv <6,:).';
 C1sum = cumsum(C1);
 C2 = RRDconvper(RRconv >= 6 & RRconv <7,:).';
@@ -135,6 +134,37 @@ C17sum = cumsum(C17);
 C18 = RRDconvper(RRconv >= 100,:).';
 C18sum = cumsum(C18);
 %%
+figure;
+set(gcf,'Position',get(0,'screensize'));
+Carr = {C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18};
+for Ck = 1:18
+    figure(Ck);
+    set(gcf,'Position',get(0,'screensize'));
+    title(['Cpeak',num2str(Ck)]);
+    for k = 1:length(Carr{Ck}(1,:))
+        ax(k) = subplot(ceil(sqrt(length(Carr{Ck}(1,:)))),ceil(sqrt(length(Carr{Ck}(1,:)))),k);
+        plot(tempx,Carr{Ck}(:,k));
+        %     plot(C1(:,k));
+        findpeaks(Carr{Ck}(:,k),tempx,'MinPeakHeight',12,'MinPeakProminence',5,'MinPeakDistance',0.5);
+        [pks,locs] = findpeaks(Carr{Ck}(:,k),tempx,'MinPeakHeight',12,'MinPeakProminence',5,'MinPeakDistance',0.5); 
+    end
+    
+    saveas(gcf,['D:\DATA\OTTParsivel\Pictures\',['Cpeak',num2str(Ck)],'.png']);
+    saveas(gcf,['E:\DATA\OTTParsivel\Pictures\new\',['Cpeak',num2str(Ck)],'.png']);
+    close
+end
+%%
+figure;
+set(gcf,'Position',get(0,'screensize'));
+subplot(3,6,1);
+mtemp = diff(C1sum)./diff(tempx)
+[tempm,ni] = max(mtemp);
+h = histogram(ni,'BinEdges',4.5:1:15.5);
+subplot(3,6,2);
+[tempm,ni] = max(diff(C2sum)./diff(tempx));
+h = histogram(ni,'BinEdges',4.5:1:15.5);
+
+%%
 % clear
 RRDstraper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDstraper');
 RRstra= h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRstra');
@@ -166,113 +196,26 @@ S9 = RRDstraper(RRstra >= 4.5 & RRstra <5,:).';
 S9sum = cumsum(S9);
 %%
 figure;
-subplot(4,5,1);
-temp = diff(C1sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-subplot(4,5,2);
-temp = diff(C2sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
 set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,3);
-temp = diff(C3sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,4);
-temp = diff(C4sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,5);
-temp = diff(C5sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,6);
-temp = diff(C6sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,7);
-temp = diff(C7sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,8);
-temp = diff(C8sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,9);
-temp = diff(C9sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,10);
-temp = diff(C10sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,11);
-temp = diff(C11sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,12);
-temp = diff(C12sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,13);
-temp = diff(C13sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,14);
-temp = diff(C14sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,15);
-temp = diff(C15sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,16);
-temp = diff(C16sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,17);
-temp = diff(C17sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
-subplot(4,5,18);
-temp = diff(C18sum)./diff(tempx);
-[ntemp,ni] = max(temp);
-h = histogram(ni,1:20);
-h.BinEdges = [4.5:17.5];
-set(gcf,'Position',get(0,'screensize'));
+Sarr = {S1,S2,S3,S4,S5,S6,S7,S8,S9,S11,S12,S13,S14};
+for Sk = 1:13
+    figure(Sk);
+    set(gcf,'Position',get(0,'screensize'));
+    title(['Speak',num2str(Sk)]);
+    for k = 1:length(Carr{Sk}(1,:))
+        ax(k) = subplot(ceil(sqrt(length(Sarr{Sk}(1,:)))),ceil(sqrt(length(Sarr{Sk}(1,:)))),k);
+        plot(tempx,Sarr{Sk}(:,k));
+        %     plot(S1(:,k));
+        findpeaks(Sarr{Sk}(:,k),tempx,'MinPeakHeight',12,'MinPeakProminence',5,'MinPeakDistance',0.5);
+%         [pks,locs] = findpeaks(Carr{Sk}(:,k),tempx);
+        %     [pks,locs,w,p] = findpeaks(S1(:,k));
+       
+    end
+    
+    saveas(gcf,['D:\DATA\OTTParsivel\Pictures\',['Speak',num2str(Sk)],'.png']);
+    saveas(gcf,['E:\DATA\OTTParsivel\Pictures\new\',['Speak',num2str(Sk)],'.png']);
+    close
+end
 %%
 savename = 'D:\DATA\Parsivel_temporary\RDlevels.h5';
 savenamee = 'E:\DATA\Parsivel_temporary\RDlevels.h5';
