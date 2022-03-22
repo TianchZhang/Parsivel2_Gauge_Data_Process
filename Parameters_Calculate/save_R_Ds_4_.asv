@@ -12,6 +12,8 @@ RRDstra = [];
 RRDallper = [];%Percentage of rainrate from diameter levels
 RRDconvper = [];
 RRDstraper = [];
+RRDconvday = [];
+RRDstraday = [];
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','diameter_bandwidth');
@@ -59,6 +61,7 @@ for fnum = 1 : length(file_day)
                 end
                 RRDconv = [RRDconv;tempR];
                 RRDconvper = [RRDconvper;tempR./RR(rainkeyc(raink))];
+                RRDconvday = [RRDconvday;file_day(fnum).name(1:8)];
                 clear tempR
             end
         end
@@ -75,6 +78,7 @@ for fnum = 1 : length(file_day)
                 end
                 RRDstra = [RRDstra;tempR];
                 RRDstraper = [RRDstraper;tempR./RR(rainkeys(raink))];
+                RRDstraday = [RRDstraday;file_day(fnum).name(1:8)];
                 clear tempR
             end
         end
@@ -83,10 +87,12 @@ end
 RRDallper = RRDallper.*100;
 RRDconvper = RRDconvper.*100;
 RRDstraper = RRDstraper.*100;
+save('',);
 %%
 clear
 RRDconvper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDconvper');
 RRconv= h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRconv');
+load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
 C1 = RRDconvper(RRconv >= 5 & RRconv <6,:).';
 C1sum = cumsum(C1);
 C2 = RRDconvper(RRconv >= 6 & RRconv <7,:).';
@@ -158,25 +164,29 @@ S9sum = cumsum(S9);
 savename = 'D:\DATA\Parsivel_temporary\RDlevels.h5';
 savenamee = 'E:\DATA\Parsivel_temporary\RDlevels.h5';
 
-h5init(savename);
 % write data
-hdf5writedata(savename, '/RRall', RRall);
+h5init(savename);
 hdf5writedata(savename, '/RRDall', RRDall);
 hdf5writedata(savename, '/RRDallper', RRDallper);
-hdf5writedata(savename, '/RRconv', RRconv);
+hdf5writedata(savename, '/RRall', RRall);
 hdf5writedata(savename, '/RRDconv', RRDconv);
+% hdf5writedata(savename, '/RRDconvday', RRDconvday);
 hdf5writedata(savename, '/RRDconvper', RRDconvper);
-hdf5writedata(savename, '/RRstra', RRstra);
+hdf5writedata(savename, '/RRconv', RRconv);
 hdf5writedata(savename, '/RRDstra', RRDstra);
+% hdf5writedata(savename, '/RRDstra', RRDstraday);
 hdf5writedata(savename, '/RRDstraper', RRDstraper);
-h5init(savenamee);
+hdf5writedata(savename, '/RRstra', RRstra);
 % write data
-hdf5writedata(savenamee, '/RRall', RRall);
+h5init(savenamee);
 hdf5writedata(savenamee, '/RRDall', RRDall);
 hdf5writedata(savenamee, '/RRDallper', RRDallper);
-hdf5writedata(savenamee, '/RRconv', RRconv);
+hdf5writedata(savenamee, '/RRall', RRall);
 hdf5writedata(savenamee, '/RRDconv', RRDconv);
+% hdf5writedata(savenamee, '/RRDconvday', RRDconvday);
 hdf5writedata(savenamee, '/RRDconvper', RRDconvper);
-hdf5writedata(savenamee, '/RRstra', RRstra);
+hdf5writedata(savenamee, '/RRconv', RRconv);
 hdf5writedata(savenamee, '/RRDstra', RRDstra);
+% hdf5writedata(savenamee, '/RRDstra', RRDstraday);
 hdf5writedata(savenamee, '/RRDstraper', RRDstraper);
+hdf5writedata(savenamee, '/RRstra', RRstra);

@@ -12,6 +12,8 @@ RRDstra = [];
 RRDallper = [];%Percentage of rainrate from diameter levels
 RRDconvper = [];
 RRDstraper = [];
+RRDconvday = [];
+RRDstraday = [];
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','diameter_bandwidth');
@@ -59,6 +61,7 @@ for fnum = 1 : length(file_day)
                 end
                 RRDconv = [RRDconv;tempR];
                 RRDconvper = [RRDconvper;tempR./RR(rainkeyc(raink))];
+                RRDconvday = [RRDconvday;file_day(fnum).name(1:8)];
                 clear tempR
             end
         end
@@ -75,6 +78,7 @@ for fnum = 1 : length(file_day)
                 end
                 RRDstra = [RRDstra;tempR];
                 RRDstraper = [RRDstraper;tempR./RR(rainkeys(raink))];
+                RRDstraday = [RRDstraday;file_day(fnum).name(1:8)];
                 clear tempR
             end
         end
@@ -83,10 +87,16 @@ end
 RRDallper = RRDallper.*100;
 RRDconvper = RRDconvper.*100;
 RRDstraper = RRDstraper.*100;
+save('D:\DATA\Parsivel_temporary\RDlevels.mat','RRDall','RRDallper','RRall',...
+    'RRDconv','RRDconvper','RRconv','RRDconvday','RRDstra','RRDstraper','RRstra','RRDstraday');
+save('E:\DATA\Parsivel_temporary\RDlevels.mat','RRDall','RRDallper','RRall',...
+    'RRDconv','RRDconvper','RRconv','RRDconvday','RRDstra','RRDstraper','RRstra','RRDstraday');
 %%
 clear
 RRDconvper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDconvper');
 RRconv= h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRconv');
+load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
+tempx = central_diameter(3:23).';
 C1 = RRDconvper(RRconv >= 5 & RRconv <6,:).';
 C1sum = cumsum(C1);
 C2 = RRDconvper(RRconv >= 6 & RRconv <7,:).';
@@ -124,71 +134,63 @@ C17sum = cumsum(C17);
 C18 = RRDconvper(RRconv >= 100,:).';
 C18sum = cumsum(C18);
 %%
-clear
+% clear
 RRDstraper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDstraper');
 RRstra= h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRstra');
-C1 = RRDstraper(RRstra >= 0.5 & RRstra <1,:).';
-C1sum = cumsum(C1);
-C2 = RRDstraper(RRstra >= 1 & RRstra <1.5,:).';
-C2sum = cumsum(C2);
-C3 = RRDstraper(RRstra >= 1.5 & RRstra <2,:).';
-C3sum = cumsum(C3);
-C4 = RRDstraper(RRstra >= 2 & RRstra <2.5,:).';
-C4sum = cumsum(C4);
-C5 = RRDstraper(RRstra >= 2.5 & RRstra <3,:).';
-C5sum = cumsum(C5);
-C6 = RRDstraper(RRstra >= 3 & RRstra <3.5,:).';
-C6sum = cumsum(C6);
-C7 = RRDstraper(RRstra >= 3.5 & RRstra <4,:).';
-C7sum = cumsum(C7);
-C8 = RRDstraper(RRstra >= 4 & RRstra <4.5,:).';
-C8sum = cumsum(C8);
-C9 = RRDstraper(RRstra >= 4.5 & RRstra <5,:).';
-C9sum = cumsum(C9);
-C10 = RRDstraper(RRstra >= 14 & RRstra <15,:).';
-C10sum = cumsum(C10);
-C11 = RRDstraper(RRstra >= 15 & RRstra <20,:).';
-C11sum = cumsum(C11);
-C12 = RRDstraper(RRstra >= 20 & RRstra <25,:).';
-C12sum = cumsum(C12);
-C13 = RRDstraper(RRstra >= 25 & RRstra <30,:).';
-C13sum = cumsum(C13);
-C14 = RRDstraper(RRstra >= 30 & RRstra <40,:).';
-C14sum = cumsum(C14);
-C15 = RRDstraper(RRstra >= 40 & RRstra <50,:).';
-C15sum = cumsum(C15);
-C16= RRDstraper(RRstra >= 50 & RRstra <70,:).';
-C16sum = cumsum(C16);
-C17 = RRDstraper(RRstra >= 70 & RRstra <100,:).';
-C17sum = cumsum(C17);
-C18 = RRDstraper(RRstra >= 100,:).';
-C18sum = cumsum(C18);
-
-
+S1 = RRDstraper(RRstra >= 0.5 & RRstra <0.6,:).';
+S1sum = cumsum(S1);
+S11 = RRDstraper(RRstra >= 0.6 & RRstra <0.7,:).';
+S11sum = cumsum(S11);
+S12 = RRDstraper(RRstra >= 0.7 & RRstra <0.8,:).';
+S12sum = cumsum(S12);
+S13 = RRDstraper(RRstra >= 0.8 & RRstra <0.9,:).';
+S13sum = cumsum(S13);
+S14 = RRDstraper(RRstra >= 0.9 & RRstra <1,:).';
+S14sum = cumsum(S14);
+S2 = RRDstraper(RRstra >= 1 & RRstra <1.5,:).';
+S2sum = cumsum(S2);
+S3 = RRDstraper(RRstra >= 1.5 & RRstra <2,:).';
+S3sum = cumsum(S3);
+S4 = RRDstraper(RRstra >= 2 & RRstra <2.5,:).';
+S4sum = cumsum(S4);
+S5 = RRDstraper(RRstra >= 2.5 & RRstra <3,:).';
+S5sum = cumsum(S5);
+S6 = RRDstraper(RRstra >= 3 & RRstra <3.5,:).';
+S6sum = cumsum(S6);
+S7 = RRDstraper(RRstra >= 3.5 & RRstra <4,:).';
+S7sum = cumsum(S7);
+S8 = RRDstraper(RRstra >= 4 & RRstra <4.5,:).';
+S8sum = cumsum(S8);
+S9 = RRDstraper(RRstra >= 4.5 & RRstra <5,:).';
+S9sum = cumsum(S9);
 
 %%
 savename = 'D:\DATA\Parsivel_temporary\RDlevels.h5';
 savenamee = 'E:\DATA\Parsivel_temporary\RDlevels.h5';
 
-h5init(savename);
 % write data
-hdf5writedata(savename, '/RRall', RRall);
+h5init(savename);
 hdf5writedata(savename, '/RRDall', RRDall);
 hdf5writedata(savename, '/RRDallper', RRDallper);
-hdf5writedata(savename, '/RRconv', RRconv);
+hdf5writedata(savename, '/RRall', RRall);
 hdf5writedata(savename, '/RRDconv', RRDconv);
+% hdf5writedata(savename, '/RRDconvday', RRDconvday);
 hdf5writedata(savename, '/RRDconvper', RRDconvper);
-hdf5writedata(savename, '/RRstra', RRstra);
+hdf5writedata(savename, '/RRconv', RRconv);
 hdf5writedata(savename, '/RRDstra', RRDstra);
+% hdf5writedata(savename, '/RRDstra', RRDstraday);
 hdf5writedata(savename, '/RRDstraper', RRDstraper);
-h5init(savenamee);
+hdf5writedata(savename, '/RRstra', RRstra);
 % write data
-hdf5writedata(savenamee, '/RRall', RRall);
+h5init(savenamee);
 hdf5writedata(savenamee, '/RRDall', RRDall);
 hdf5writedata(savenamee, '/RRDallper', RRDallper);
-hdf5writedata(savenamee, '/RRconv', RRconv);
+hdf5writedata(savenamee, '/RRall', RRall);
 hdf5writedata(savenamee, '/RRDconv', RRDconv);
+% hdf5writedata(savenamee, '/RRDconvday', RRDconvday);
 hdf5writedata(savenamee, '/RRDconvper', RRDconvper);
-hdf5writedata(savenamee, '/RRstra', RRstra);
+hdf5writedata(savenamee, '/RRconv', RRconv);
 hdf5writedata(savenamee, '/RRDstra', RRDstra);
+% hdf5writedata(savenamee, '/RRDstra', RRDstraday);
 hdf5writedata(savenamee, '/RRDstraper', RRDstraper);
+hdf5writedata(savenamee, '/RRstra', RRstra);
