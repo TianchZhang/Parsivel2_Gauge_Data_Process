@@ -13,7 +13,9 @@ RRDallper = [];%Percentage of rainrate from diameter levels
 RRDconvper = [];
 RRDstraper = [];
 RRDconvday = [];
+RRDconvmin = [];
 RRDstraday = [];
+RRDstramin = [];
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','diameter_bandwidth');
@@ -62,6 +64,7 @@ for fnum = 1 : length(file_day)
                 RRDconv = [RRDconv;tempR];
                 RRDconvper = [RRDconvper;tempR./RR(rainkeyc(raink))];
                 RRDconvday = [RRDconvday;file_day(fnum).name(1:8)];
+                RRDconvmin = [RRDconvmin;rainkeyc(raink)];
                 clear tempR
             end
         end
@@ -79,6 +82,7 @@ for fnum = 1 : length(file_day)
                 RRDstra = [RRDstra;tempR];
                 RRDstraper = [RRDstraper;tempR./RR(rainkeys(raink))];
                 RRDstraday = [RRDstraday;file_day(fnum).name(1:8)];
+                RRDstramin = [RRDstramin;rainkeys(raink)];
                 clear tempR
             end
         end
@@ -88,9 +92,11 @@ RRDallper = RRDallper.*100;
 RRDconvper = RRDconvper.*100;
 RRDstraper = RRDstraper.*100;
 save('D:\DATA\Parsivel_temporary\RDlevels.mat','RRDall','RRDallper','RRall',...
-    'RRDconv','RRDconvper','RRconv','RRDconvday','RRDstra','RRDstraper','RRstra','RRDstraday');
+    'RRDconv','RRDconvper','RRconv','RRDconvday','RRDstra','RRDstraper',...
+'RRstra','RRDstraday','RRDstramin','RRDconvmin');
 save('E:\DATA\Parsivel_temporary\RDlevels.mat','RRDall','RRDallper','RRall',...
-    'RRDconv','RRDconvper','RRconv','RRDconvday','RRDstra','RRDstraper','RRstra','RRDstraday');
+    'RRDconv','RRDconvper','RRconv','RRDconvday','RRDstra','RRDstraper',...
+    'RRstra','RRDstraday','RRDstramin','RRDconvmin');
 %%
 clear
 RRDconvper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDconvper');
