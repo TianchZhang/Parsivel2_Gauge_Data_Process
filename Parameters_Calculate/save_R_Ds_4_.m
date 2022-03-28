@@ -162,14 +162,17 @@ end
 %%
 figure;
 set(gcf,'Position',get(0,'screensize'));
-subplot(3,6,1);
-mtemp = diff(C1sum)./diff(tempx)
-[tempm,ni] = max(mtemp);
-h = histogram(ni,'BinEdges',4.5:1:15.5);
-subplot(3,6,2);
-[tempm,ni] = max(diff(C2sum)./diff(tempx));
-h = histogram(ni,'BinEdges',4.5:1:15.5);
-
+Carr = {C1sum,C2sum,C3sum,C4sum,C5sum,C6sum,C7sum,C8sum,C9sum,...
+    C10sum,C11sum,C12sum,C13sum,C14sum,C15sum,C16sum,C17sum,C18sum};
+for Ck = 1:18
+    subplot(3,6,Ck);
+    mtemp = diff(Carr{1,Ck})./diff(tempx);
+    [tempm,ni] = max(mtemp);
+    h = histogram(ni,'BinEdges',4.5:1:20.5);
+    legend(num2str(Ck));
+end
+%     saveas(gcf,['D:\DATA\OTTParsivel\Pictures\','Contribution_slope.png']);
+%     saveas(gcf,['E:\DATA\OTTParsivel\Pictures\new\','Contribution_slope.png']);
 %%
 clear
 RRDstraper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDstraper');
