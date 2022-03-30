@@ -10,6 +10,7 @@ tempx = central_diameter(3:23).';
 RRDconvper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDconvper');
 RRconv= h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRconv');
 RRDconvday= cell2mat(struct2cell(load('D:\DATA\Parsivel_temporary\RDlevels.mat','RRDconvday')));
+RRDconvmin= cell2mat(struct2cell(load('D:\DATA\Parsivel_temporary\RDlevels.mat','RRDconvmin')));
 pk1 = zeros(length(RRconv),3);%location in RRconv;peak;location in diameters
 pk2 = zeros(length(RRconv),5);%location in RRconv;two peaks;two locations in diameters
 pk3 = zeros(length(RRconv),7);%location in RRconv
@@ -38,10 +39,14 @@ pk3(sum(pk3,2)==0,:) = [];
 %%
 figure
 set(gcf,'Position',get(0,'screensize'));
-for ik = 7:20
+for ik = 10:10
     Rconvpk1 = RRDconvper(pk1(pk1(:,3)==tempx(ik),1),:);
-    subplot(4,4,ik-6)
-    plot(tempx,Rconvpk1);
+%     subplot(4,4,ik-6)
+%     plot(tempx,Rconvpk1);
+    Rpk1 = RRconv(pk1(pk1(:,3)==tempx(ik),1),:);
+    Rpk1day = RRDconvday(pk1(pk1(:,3)==tempx(ik),1),:);
+    Rpk1min = RRDconvmin(pk1(pk1(:,3)==tempx(ik),1),:);
+    histogram(Rpk1);
 end
 %  saveas(gcf,'D:\DATA\OTTParsivel\Pictures\Rconpeak1.png');
 %     saveas(gcf,'E:\DATA\OTTParsivel\Pictures\new\Rconpeak1.png');

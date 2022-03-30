@@ -10,6 +10,7 @@ tempx = central_diameter(3:23).';
 RRDconvper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDconvper');
 RRconv= h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRconv');
 RRDconvday= cell2mat(struct2cell(load('D:\DATA\Parsivel_temporary\RDlevels.mat','RRDconvday')));
+RRDconvmin= cell2mat(struct2cell(load('D:\DATA\Parsivel_temporary\RDlevels.mat','RRDconvmin')));
 pk1 = zeros(length(RRconv),3);%location in RRconv;peak;location in diameters
 pk2 = zeros(length(RRconv),5);%location in RRconv;two peaks;two locations in diameters
 pk3 = zeros(length(RRconv),7);%location in RRconv
@@ -17,7 +18,7 @@ pk0 = zeros(length(RRconv),1);%location in RRconv when none of peaks
 pk4 = zeros(length(RRconv),1);%location in RRconv when number of peaks is more than 3
 %         findpeaks(RRDconvper,tempx,'MinPeakHeight',12,'MinPeakProminence',5,'MinPeakDistance',0.5);
 for rk = 1: length(RRconv)
-    [pks,locs] = findpeaks(RRDconvper(rk,:),tempx,'MinPeakHeight',12,'MinPeakProminence',5,'MinPeakDistance',0.5);
+    [pks,locs] = findpeaks(RRDconvper(rk,:),tempx,'MinPeakHeight',12,'MinPeakProminence',5,'MinPeakDistance',0.25);
     switch length(pks)
         case 0
             pk0(rk) = rk;
@@ -38,11 +39,13 @@ pk3(sum(pk3,2)==0,:) = [];
 %%
 figure
 set(gcf,'Position',get(0,'screensize'));
-for ik = 7:20
+for ik = 7:7
     Rconvpk1 = RRDconvper(pk1(pk1(:,3)==tempx(ik),1),:);
     subplot(4,4,ik-6)
     plot(tempx,Rconvpk1);
 end
+%  saveas(gcf,'D:\DATA\OTTParsivel\Pictures\Rconpeak1.png');
+%     saveas(gcf,'E:\DATA\OTTParsivel\Pictures\new\Rconpeak1.png');
 %%
 figure
 set(gcf,'Position',get(0,'screensize'));
@@ -64,9 +67,21 @@ for ik = 7:20
     plot(tempx,Rconvpk2);
     end
 end
-    saveas(gcf,'D:\DATA\OTTParsivel\Pictures\Rconpeak2.png');
-    saveas(gcf,'E:\DATA\OTTParsivel\Pictures\new\Rconpeak2.png');
-    
+%     saveas(gcf,'D:\DATA\OTTParsivel\Pictures\Rconpeak2.png');
+%     saveas(gcf,'E:\DATA\OTTParsivel\Pictures\new\Rconpeak2.png');
+%%
+figure
+set(gcf,'Position',get(0,'screensize'));
+for ik = 7:20
+    temp = pk2(pk2(:,4)==tempx(ik),1);
+    if ~isempty(temp)
+        Rconvpk2 = (sum(RRDconvper(temp,:),1)./length(temp)).';
+        subplot(4,4,ik-6)
+        [ff2,gof2]=fit(tempx,Rconvpk2,'gauss2');
+        plot(ff2,tempx,Rconvpk2);
+        legend('off')
+    end
+end
 %%
 figure
 set(gcf,'Position',get(0,'screensize'));
@@ -77,5 +92,5 @@ for ik = 7:20
     plot(tempx,Rconvpk3);
     end
 end
-    saveas(gcf,'D:\DATA\OTTParsivel\Pictures\Rconpeak3.png');
-    saveas(gcf,'E:\DATA\OTTParsivel\Pictures\new\Rconpeak3.png');
+%     saveas(gcf,'D:\DATA\OTTParsivel\Pictures\Rconpeak3.png');
+%     saveas(gcf,'E:\DATA\OTTParsivel\Pictures\new\Rconpeak3.png');
