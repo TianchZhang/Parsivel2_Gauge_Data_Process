@@ -140,8 +140,6 @@ C17sum = cumsum(C17);
 C18 = RRDconvper(RRconv >= 100,:).';
 C18sum = cumsum(C18);
 %%
-figure;
-set(gcf,'Position',get(0,'screensize'));
 Carr = {C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18};
 for Ck = 1:18
     figure(Ck);
@@ -160,16 +158,15 @@ for Ck = 1:18
     close
 end
 %%
+Carr = {C1sum,C2sum,C3sum,C4sum,C5sum,C6sum,C7sum,C8sum,C9sum,C10sum,C11sum,C12sum,C13sum,C14sum,C15sum,C16sum,C17sum,C18sum};
 figure;
 set(gcf,'Position',get(0,'screensize'));
-subplot(3,6,1);
-mtemp = diff(C1sum)./diff(tempx)
-[tempm,ni] = max(mtemp);
-h = histogram(ni,'BinEdges',4.5:1:15.5);
-subplot(3,6,2);
-[tempm,ni] = max(diff(C2sum)./diff(tempx));
-h = histogram(ni,'BinEdges',4.5:1:15.5);
-
+for Ck = 1:18
+    subplot(3,6,Ck);
+    mtemp = diff(Carr{1,Ck})./diff(tempx);
+    [tempm,ni] = max(mtemp);
+    h = histogram(ni,'BinEdges',4.5:1:15.5);
+end
 %%
 clear
 RRDstraper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDstraper');
