@@ -37,12 +37,20 @@ pk1(sum(pk1,2)==0,:) = [];
 pk2(sum(pk2,2)==0,:) = [];
 pk3(sum(pk3,2)==0,:) = [];
 %%
-figure
-set(gcf,'Position',get(0,'screensize'));
-for ik = 7:7
-    Rconvpk1 = RRDconvper(pk1(pk1(:,3)==tempx(ik),1),:);
-    subplot(4,4,ik-6)
-    plot(tempx,Rconvpk1);
+% figure
+% set(gcf,'Position',get(0,'screensize'));
+Rpk1 = {};
+Rpk1day = {};
+Rpk1min = {};
+Rconvpk1 ={};
+for ik = 7:20
+    Rconvpk1 = {Rconvpk1,RRDconvper(pk1(pk1(:,3)==tempx(ik),1),:)};
+%     subplot(4,4,ik-6)
+%     plot(tempx,Rconvpk1);
+    Rpk1 = [Rpk1,RRconv(pk1(pk1(:,3)==tempx(ik),1),:)};
+    Rpk1day ={Rpk1day,RRDconvday(pk1(pk1(:,3)==tempx(ik),1),:)};
+    Rpk1min ={Rpk1min,RRDconvmin(pk1(pk1(:,3)==tempx(ik),1),:)};
+%     histogram(Rpk1);
 end
 %  saveas(gcf,'D:\DATA\OTTParsivel\Pictures\Rconpeak1.png');
 %     saveas(gcf,'E:\DATA\OTTParsivel\Pictures\new\Rconpeak1.png');
