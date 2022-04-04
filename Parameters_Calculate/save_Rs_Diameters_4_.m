@@ -161,12 +161,25 @@ end
 Carr = {C1sum,C2sum,C3sum,C4sum,C5sum,C6sum,C7sum,C8sum,C9sum,C10sum,C11sum,C12sum,C13sum,C14sum,C15sum,C16sum,C17sum,C18sum};
 figure;
 set(gcf,'Position',get(0,'screensize'));
+<<<<<<< HEAD:Parameters_Calculate/save_Rs_Diameters_4_.m
+=======
+Carr = {C1sum,C2sum,C3sum,C4sum,C5sum,C6sum,C7sum,C8sum,C9sum,...
+    C10sum,C11sum,C12sum,C13sum,C14sum,C15sum,C16sum,C17sum,C18sum};
+>>>>>>> f4b981fc5ffe30fb300ace6da911291be703dd33:Parameters_Calculate/save_R_Ds_4_.m
 for Ck = 1:18
     subplot(3,6,Ck);
     mtemp = diff(Carr{1,Ck})./diff(tempx);
     [tempm,ni] = max(mtemp);
+<<<<<<< HEAD:Parameters_Calculate/save_Rs_Diameters_4_.m
     h = histogram(ni,'BinEdges',4.5:1:15.5);
 end
+=======
+    h = histogram(ni,'BinEdges',4.5:1:20.5);
+    legend(num2str(Ck));
+end
+%     saveas(gcf,['D:\DATA\OTTParsivel\Pictures\','Contribution_slope.png']);
+%     saveas(gcf,['E:\DATA\OTTParsivel\Pictures\new\','Contribution_slope.png']);
+>>>>>>> f4b981fc5ffe30fb300ace6da911291be703dd33:Parameters_Calculate/save_R_Ds_4_.m
 %%
 clear
 RRDstraper = h5read('D:\DATA\Parsivel_temporary\RDlevels.h5','/RRDstraper');
