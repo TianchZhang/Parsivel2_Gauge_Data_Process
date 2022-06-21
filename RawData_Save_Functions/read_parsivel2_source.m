@@ -55,7 +55,7 @@ if exist(filename, 'file') ~= 2
     mTime_source = NaN;
 else
     fid = fopen(filename, 'r');
-   [temp= textscan(fid, '%*s %*s %s %*s %2d %8.3f %7.2f %6.3f %5d %7.2f %4.2f %4.1f %d %d %d %7.2f %6d %3d %[^\n]');
+    temp= textscan(fid, '%*s %*s %s %*s %2d %8.3f %7.2f %6.3f %5d %7.2f %4.2f %4.1f %d %d %d %7.2f %6d %3d %[^\n]');
     temp1 = char(temp{1,1});
     mTime_source = fix(str2num(temp1(:,1:2)))*60 + fix(str2num(temp1(:,4:5))) + 1
     w_code_source(mTime_source) = temp{1,2};
