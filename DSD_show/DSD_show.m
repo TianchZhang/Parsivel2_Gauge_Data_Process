@@ -8,16 +8,16 @@
 % file_root = 'E:\DATA\OTTParsivel\QC2019-\';
 % load('E:\CODE\OTTparsivel2_mat\DSD_parameters.mat','central_dia_qc');
 % load('E:\CODE\OTTparsivel2_mat\DSD_parameters.mat', 'dia_bandwidth_qc');
-savepath ='D:\DATA\OTTParsivel\Pictures\DSD-nonQC\';
-file_root = 'D:\DATA\OTTParsivel\nonQC2019-\';
-load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
-load('D:\DATA\Parsivel_temporary\DSD_parameters.mat', 'diameter_bandwidth');
+savepath ='E:\DATA\OTTParsivel\Pictures\DSD-nonQC\';
+file_root = 'E:\DATA\OTTParsivel\nonQC2019-\';
+load('E:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
+load('E:\DATA\Parsivel_temporary\DSD_parameters.mat', 'diameter_bandwidth');
 
 temp_centr_dia = central_diameter;
 temp_dia_bandw = diameter_bandwidth;
 
 file_day = dir([file_root,'*.h5']);
-for fnum = 434 : length(file_day)
+for fnum = 440 : length(file_day)
     fname = [file_root,file_day(fnum).name];
     ND = h5read(fname,'/ND');
     RR = h5read(fname,'/RR');

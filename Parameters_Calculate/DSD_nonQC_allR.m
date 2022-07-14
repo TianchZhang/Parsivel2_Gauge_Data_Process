@@ -9,14 +9,14 @@ clear;
 nonrain = ["20190404";"20190405";"20190406";"20190407";...
     "20191218";"20200109";"20200115";"20200116";"20200125";...
     "20200215";"20201213";"20201214";"20201229"];
-savepath ='D:\DATA\OTTParsivel\nonQC2019-\';
+savepath ='E:\DATA\OTTParsivel\nonQC2019-\';
 file_root = 'E:\DATA\OTTParsivel\57494\Mputu\';
 file_day = dir(file_root);
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','speed_coe');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','diameter_bandwidth');
-for fnum = 951:951%length(file_day)
+for fnum = 872:length(file_day)
     if ~any(contains(nonrain,file_day(fnum).name))
         fname = [file_root,file_day(fnum).name];
         Mputu = zeros(32,32,1440);
