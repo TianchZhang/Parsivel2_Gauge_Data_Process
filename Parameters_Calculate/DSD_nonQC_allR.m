@@ -16,7 +16,7 @@ load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','speed_coe');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_diameter');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','central_speed');
 load('D:\DATA\Parsivel_temporary\DSD_parameters.mat','diameter_bandwidth');
-for fnum = 872:length(file_day)
+for fnum = 3:length(file_day)
     if ~any(contains(nonrain,file_day(fnum).name))
         fname = [file_root,file_day(fnum).name];
         Mputu = zeros(32,32,1440);
@@ -37,10 +37,13 @@ for fnum = 872:length(file_day)
         M3 = zeros(1440,1);
         M4 = zeros(1440,1);
         M6 = zeros(1440,1);
+        mu1 = zeros(1440,1);
+        mu2 = zeros(1440,1);
         mu = zeros(1440,1);
         lamd = zeros(1440,1);
         N0 = zeros(1440,1);
         D0 = zeros(1440,1);
+        Nt = zeros(1440,1);
         ftxts = dir([fname,'\*.txt']);
         for ifile =1:length(ftxts)
             %             fprintf('Reading %s.\n', ftxts(ifile).name);
@@ -63,6 +66,7 @@ for fnum = 872:length(file_day)
                     M3(mTime_putu) = M3(mTime_putu) + ND(mTime_putu,di) .*central_diameter(di).^3 .* diameter_bandwidth(di);
                     M4(mTime_putu) = M4(mTime_putu) + ND(mTime_putu,di) .*central_diameter(di).^4 .* diameter_bandwidth(di);
                     M6(mTime_putu) = M6(mTime_putu) + ND(mTime_putu,di) .*central_diameter(di).^6 .* diameter_bandwidth(di);
+                    Nt(mTime_putu) = Nt(mTime_putu) + ND(mTime_putu,di) .*central_diameter(di).^0 .* diameter_bandwidth(di);
                 end
                 
                 Dm(mTime_putu) = M4(mTime_putu)./M3(mTime_putu);
@@ -70,7 +74,19 @@ for fnum = 872:length(file_day)
                 Nw(mTime_putu) = 4^4 ./ pi .* 1e3 .* LWC(mTime_putu) ./ (Dm(mTime_putu) .^4);
                 
                 ita =(M4(mTime_putu).^2)./(M2(mTime_putu) .* M6(mTime_putu));
-                mu(mTime_putu) = ((7-11*ita)-sqrt(ita^.2+14*ita+1))./(2*(ita-1));
+                mu1(mTime_putu) = ((11*ita-7)-sqrt(ita^.2+14*ita+1))./(2*(1-ita));
+                mu2(mTime_putu) = ((11*ita-7)+sqrt(ita^.2+14*ita+1))./(2*(1-ita));
+                tmu1 = sqrt((mu1(mTime_putu)+2)^2+(mu1(mTime_putu)-15)^2);
+                tmu2 = sqrt((mu2(mTime_putu)+2)^2+(mu2(mTime_putu)-15)^2);
+                if mu1(mTime_putu) < -2
+                    mu(mTime_putu) = mu2(mTime_putu);
+                else
+                    if min(tmu1,tmu2) ==tmu1
+                        mu(mTime_putu) = mu1(mTime_putu);
+                    else
+                        mu(mTime_putu) = mu2(mTime_putu);
+                    end
+                end
                 lamd(mTime_putu) = sqrt((M2(mTime_putu) .* gamma(mu(mTime_putu)+5))./(M4(mTime_putu) .* gamma(mu(mTime_putu)+3)));
                 N0(mTime_putu) = M6(mTime_putu)*lamd(mTime_putu).^(mu(mTime_putu)+6+1)./gamma(mu(mTime_putu)+6+1);
                 temp = 0;
@@ -95,6 +111,7 @@ for fnum = 872:length(file_day)
                     lamd(mTime_putu) = 0;
                     N0(mTime_putu) = 0;
                     D0(mTime_putu) = 0;
+                    Nt(mTime_putu) = 0;
                 end
                 
             else
@@ -209,6 +226,9 @@ for fnum = 872:length(file_day)
             hdf5writedata(savename, '/Mn/M4', M4, ...
                 'dataAttr', ...
                 struct('Units', '', 'long_name', 'M4'));
+            hdf5writedata(savename, '/Nt', Nt, ...
+                'dataAttr', ...
+                struct('Units', '', 'long_name', 'total number concentration'));
 
         end
     end

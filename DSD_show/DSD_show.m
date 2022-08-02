@@ -17,7 +17,7 @@ temp_centr_dia = central_diameter;
 temp_dia_bandw = diameter_bandwidth;
 
 file_day = dir([file_root,'*.h5']);
-for fnum = 440 : length(file_day)
+for fnum = 440 : 440%length(file_day)
     fname = [file_root,file_day(fnum).name];
     ND = h5read(fname,'/ND');
     RR = h5read(fname,'/RR');
@@ -61,18 +61,20 @@ for fnum = 440 : length(file_day)
     
     yyaxis(ax2,'left');
     tempp = plot(ax2,1:1:1440,RR);
-    ax2.YLim = [0 ceil(max(RR))*1.2];
+    tempp.LineWidth = 1.2;
+    ax2.YLim = [0 ceil(max(RR)*10)./10*1.2];
     ax2.YLabel.String = 'Rain Rate(mm\cdoth_{-1})';
     ax2.XLim = [0 1440];
     ax2.XTick = 0:180:1440;
     ax2.XTickLabel = {'00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00'};
-    text(100,ceil(max(RR))*1.2*0.8,{'Max Rain Rate',sprintf('%8.2f',round(max(RR),2))});
+    text(100,ceil(max(RR)*10)./10*1.2*0.8,{'Max Rain Rate',sprintf('%8.2f',round(max(RR),2))});
  
     yyaxis(ax2,'right');
     temps = bar(ax2,1:1:1440,Rainfall);
     ax2.YLabel.String = 'Rainfall(mm)';
     ax2.XLabel.String = 'Time(UTC+8)';
     tempY = max(Rainfall) * 1.2;
+    temps.FaceAlpha = 0.5;
 %     if max(Rainfall)-floor(max(Rainfall)) < 0.5
 %         tempY = floor(max(Rainfall))+0.5;
 %     else
