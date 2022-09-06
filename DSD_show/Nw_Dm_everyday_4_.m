@@ -4,7 +4,7 @@
 % 2021.05.06 first by zhangtc
 %
 savepath = 'E:\DATA\OTTParsivel\Pictures\Nw-Dm\';
-file_root = 'D:\DATA\OTTParsivel\nonQC2019-\';
+file_root = 'E:\DATA\OTTParsivel\nonQC2019mR-\';
 file_day = dir([file_root,'*.h5']);
 for fnum = 1 : length(file_day)
     fname = [file_root,file_day(fnum).name];
