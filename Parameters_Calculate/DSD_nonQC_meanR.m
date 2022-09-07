@@ -130,7 +130,7 @@ for fnum = 3:length(file_day)
         
         if any(rainflag > 0)
             temp_rf = rainflag;
-            temp_rf(RR < 0.5) = 0;
+            temp_rf(RR < 0.1) = 0;
             temp_r = smooth(temp_rf,11);
             clear temp_rf
             temp_r([1:5,end-4:end]) = 0;
